@@ -1,0 +1,40 @@
+grounding:
+alphabet := { 1..3 }.
+state := { naught, cross }.
+address := { 1..3 }.
+intermediateAddresses := {}.
+
+formula:
+\forall P \in player : row(P) := \bigor I \in dim : \bigand J \in dim : move(I, J, P).
+\forall P \in player : col(P) := \bigor J \in dim : \bigand I \in dim : move(I, J, P).
+\forall P \in player : diag1(P) := \bigand I \in dim : move(I, I, P).
+\forall P \in player : diag2(P) := \bigand I \in dim : move(I, 4-I, P).
+\forall P \in player : win(P) := row(P) \or col(P) \or diag1(P) \or diag2(P).
+\forall I J \in dim : fullThere(I, J) := \bigor P \in player : move(I, J, P).
+full := \bigand I J \in dim : fullThere(I, J).
+
+\forall K \in { 0..4 } : nstrategy((2*K)+1) := \neg win(cross) \and <play(naught)>cstrategy(2*K).
+cstrategy(0) := win(naught).
+\forall K \in { 1..4 } : cstrategy(2*K) := win(naught) \or (\neg full \and [play(cross)]nstrategy((2*K)-1)).
+run := <exists>\top.
+
+program:
+\forall S \in state : updateState(S) := \bigseq Q \in state: nextState(Q) <- Q = S.
+\forall A \in alphabet, L \in address : updateCell(L, A) := \bigseq K \in address, B \in alphabet: nextCell(K, B) <- (K = L & B = A) | (K != L & currentCell(K, B)).
+\forall L \in address : updateHead(L) := \bigseq K \in address: nextHead(K) <- K = L.
+
+init := updateState(init);
+        \bigseq L \in address, A \in alphabet: updateCell(L, A);
+        \bigseq L \in address: updateCell(L, blank);
+        updateHead(0).
+
+moveHead(left) := currentCell(min)? updateHead(min); \bigseq L \in intAddress : currentCell(L-1)?; updateHead(L).
+moveHead(right) := currentCell(max)? updateHead(max); \bigseq L \in intAddress : currentCell(L+1)?; updateHead(L).
+
+transition(Q, A) := (S, B, D) :
+proceed
+\forall I J \in dim, P \in player : playThere(I, J, P) := \neg fullThere(I, J)? \seq move(I, J, P) <- \top.
+\forall P \in player : play(P) := \bigcup I J \in dim : playThere(I, J, P).
+
+main:
+run.

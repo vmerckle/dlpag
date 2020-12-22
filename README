@@ -1,0 +1,3 @@
+* To compile run
+* `opam install menhir tsort`
+* make errorfile; make
