@@ -1,0 +1,11 @@
+grounding:
+
+formula:
+phi := <a <- \neg (b \and c) \seq pi> ((a \or b) \and \neg \top).
+
+program:
+pi := b <- c\and b*.
+
+
+main:
+phi.
