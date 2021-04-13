@@ -169,9 +169,9 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE CNAME RPAREN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
-## In state 93, spurious reduction of production inner_program -> callable 
-## In state 81, spurious reduction of production program -> inner_program 
+## In state 21, spurious reduction of production callable -> CNAME
+## In state 93, spurious reduction of production inner_program -> callable
+## In state 81, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -239,7 +239,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME DEFINE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
+## In state 21, spurious reduction of production callable -> CNAME
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -269,9 +269,9 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME RPAREN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
-## In state 93, spurious reduction of production inner_program -> callable 
-## In state 81, spurious reduction of production program -> inner_program 
+## In state 21, spurious reduction of production callable -> CNAME
+## In state 93, spurious reduction of production inner_program -> callable
+## In state 81, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -328,11 +328,11 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET LPAREN CNAME NONDET CNAME
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
-## In state 93, spurious reduction of production inner_program -> callable 
-## In state 88, spurious reduction of production separated_nonempty_list(poperator,inner_program) -> inner_program 
-## In state 87, spurious reduction of production separated_many_slist(poperator,inner_program) -> inner_program poperator separated_nonempty_list(poperator,inner_program) 
-## In state 78, spurious reduction of production outer_program -> separated_many_slist(poperator,inner_program) 
+## In state 21, spurious reduction of production callable -> CNAME
+## In state 93, spurious reduction of production inner_program -> callable
+## In state 88, spurious reduction of production separated_nonempty_list(poperator,inner_program) -> inner_program
+## In state 87, spurious reduction of production separated_many_slist(poperator,inner_program) -> inner_program poperator separated_nonempty_list(poperator,inner_program)
+## In state 78, spurious reduction of production outer_program -> separated_many_slist(poperator,inner_program)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -352,8 +352,8 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET LPAREN CNAME RPAREN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
-## In state 93, spurious reduction of production inner_program -> callable 
+## In state 21, spurious reduction of production callable -> CNAME
+## In state 93, spurious reduction of production inner_program -> callable
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -436,9 +436,9 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LPAREN TOP CONJ TOP STAR
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 105, spurious reduction of production separated_nonempty_list(foperator,inner_formula) -> inner_formula 
-## In state 104, spurious reduction of production separated_many_slist(foperator,inner_formula) -> inner_formula foperator separated_nonempty_list(foperator,inner_formula) 
-## In state 98, spurious reduction of production outer_formula -> separated_many_slist(foperator,inner_formula) 
+## In state 105, spurious reduction of production separated_nonempty_list(foperator,inner_formula) -> inner_formula
+## In state 104, spurious reduction of production separated_many_slist(foperator,inner_formula) -> inner_formula foperator separated_nonempty_list(foperator,inner_formula)
+## In state 98, spurious reduction of production outer_formula -> separated_many_slist(foperator,inner_formula)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -529,7 +529,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE TOP STAR
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 100, spurious reduction of production formula -> inner_formula 
+## In state 100, spurious reduction of production formula -> inner_formula
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -608,7 +608,7 @@ file: GROUND COLON FORMULA COLON CNAME LPAREN LPAREN VNAME COMMA
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 31, spurious reduction of production expr -> inner_expr 
+## In state 31, spurious reduction of production expr -> inner_expr
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -738,7 +738,7 @@ file: GROUND COLON FORMULA COLON CNAME TEST
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
+## In state 21, spurious reduction of production callable -> CNAME
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -781,7 +781,7 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME DEFINE TOP ST
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 100, spurious reduction of production formula -> inner_formula 
+## In state 100, spurious reduction of production formula -> inner_formula
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -811,7 +811,7 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME TEST
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
+## In state 21, spurious reduction of production callable -> CNAME
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -903,9 +903,9 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE CNAME RPAREN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
-## In state 93, spurious reduction of production inner_program -> callable 
-## In state 81, spurious reduction of production program -> inner_program 
+## In state 21, spurious reduction of production callable -> CNAME
+## In state 93, spurious reduction of production inner_program -> callable
+## In state 81, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -935,7 +935,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME TEST
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
+## In state 21, spurious reduction of production callable -> CNAME
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -953,9 +953,9 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
-## In state 93, spurious reduction of production inner_program -> callable 
-## In state 81, spurious reduction of production program -> inner_program 
+## In state 21, spurious reduction of production callable -> CNAME
+## In state 93, spurious reduction of production inner_program -> callable
+## In state 81, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -985,7 +985,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
+## In state 21, spurious reduction of production callable -> CNAME
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -1027,7 +1027,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON CNAME TEST
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 21, spurious reduction of production callable -> CNAME 
+## In state 21, spurious reduction of production callable -> CNAME
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
