@@ -2,7 +2,7 @@
 %token <string> CNAME
 %token <int> INT
 %token IN FORALL BIGCONJ BIGDISJ BIGSEQ BIGNONDET BIGPLUS
-%token TOP NEG CONJ DISJ LANGLE RANGLE
+%token BOT TOP NEG CONJ DISJ LANGLE RANGLE
 %token ASSIGN TEST SEQ NONDET CONVERSE STAR
 %token LPAREN RPAREN LBRACE RBRACE LBRACKET RBRACKET
 %token DEFINE COLON COMMA DOT RANGE PLUS MINUS
@@ -78,6 +78,7 @@ inner_formula:
 | LPAREN f = outer_formula RPAREN { f }
 | c = callable { Ast.CallF c }
 | TOP { Ast.Top}
+| BOT { Ast.Neg (Ast.Top) }
 | NEG f = inner_formula { Ast.Neg f }
 | LANGLE p = program RANGLE f = inner_formula { Ast.Diamond (p, f) }
 | LBRACKET p = program RBRACKET f = inner_formula { Ast.Neg (Ast.Diamond (p, Ast.Neg f)) }

@@ -39,9 +39,15 @@ let convert g =
   ()
 
 let ground g =
+  printf "%s\n\n" (Circuit.Print.file g);
+  let f = Formula.file g in
+  printf "%s\n" (Formula.Print.formula f)
+
+let ground_d g =
   let f = Formula.file g in
   let d = Desugar.formula f in
-  printf "%s\n" (Desugar.Print.formula d)
+  (*printf "%s\n" (Desugar.Print.formula d);*)
+  ()
 
 module S = Solve
 let solve g =
@@ -51,6 +57,7 @@ let solve g =
 let start () =
   let gr, f = get () in
   let p = Parse.from_file () f in
+  (*printf "%s\n\n" (Ast.Print.file p);*)
   let g = Circuit.file p in
   if gr then ground g else solve g
   (*if gr then convert g else solve g*)

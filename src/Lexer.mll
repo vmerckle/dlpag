@@ -50,6 +50,7 @@ and token = parse
   | "\\bigor" { P.BIGDISJ } | "\\bigand" { P.BIGCONJ } | "\\bigseq" { P.BIGSEQ } | "\\bigcup" { P.BIGNONDET }
   | "\\or" { P.DISJ } | "\\and" { P.CONJ } | "\\seq" { P.SEQ } | "\\cup" { P.NONDET }
   | "\\top" { P.TOP }
+  | "\\bot" { P.BOT }
 (*  | "\\|" { P.BIGDISJ } | "\\&" { P.BIGCONJ } | "\\;" { P.BIGSEQ } | "\\!" { P.BIGNONDET }
   | "|" { P.DISJ } | "&" { P.CONJ } | ";" { P.SEQ } | "!" { P.NONDET }*)
   | integer as i { P.INT (int_of_string i) }
