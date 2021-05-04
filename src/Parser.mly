@@ -80,6 +80,7 @@ inner_formula:
 | TOP { Ast.Top}
 | BOT { Ast.Neg (Ast.Top) }
 | NEG f = inner_formula { Ast.Neg f }
+| LPAREN NEG f = inner_formula RPAREN { Ast.Neg f }
 | LANGLE p = program RANGLE f = inner_formula { Ast.Diamond (p, f) }
 | LBRACKET p = program RBRACKET f = inner_formula { Ast.Neg (Ast.Diamond (p, Ast.Neg f)) }
 

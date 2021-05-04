@@ -75,6 +75,7 @@ struct
   let compare = compare
   let test_atom v a = v.(a)
   let copy = Array.copy
+  let print a = "a" ^ Print.array (sprintf "%b") a
 end
 
 module VSet = Set.Make (Valuation)
@@ -101,12 +102,15 @@ and naive_p domain valuation = function
      vset_map_unions2 (fun valua -> naive_p domain valua (ListP (Ast.Seq, ps))) first
   | Converse p -> assert false
   | Kleene p ->
-     let all = ref VSet.empty in
+     let all = ref (VSet.singleton valuation) in
      let stack = Stack.create () in
      Stack.push valuation stack;
+     (*eprintf "%s\n" (Valuation.print valuation);*)
      let treat v = if not (VSet.mem v !all) then (all := VSet.add v !all; Stack.push v stack) in
      while not (Stack.is_empty stack) do
+       (*eprintf "hello\n";*)
        let news = naive_p domain (Stack.pop stack) p in
+       (*eprintf "%s\n" (Print.list Valuation.print (VSet.elements news));*)
        VSet.iter treat news
      done;
      !all
