@@ -70,6 +70,7 @@ callable:
 
 formula:
 | f = outer_formula { f }
+| LPAREN f = outer_formula RPAREN { f }
 | l = separated_many_slist(foperator, inner_formula) { Ast.ListF l }
 | vs = var_decls(bfoperator) f = formula { Ast.VarF (fst vs, snd vs, f) }
 outer_formula:
