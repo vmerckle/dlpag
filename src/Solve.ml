@@ -90,7 +90,7 @@ let rec naive_f domain valuation = function
   | Neg f -> not (naive_f domain valuation f)
   | ListF (Ast.Conj, fs) -> List.for_all (naive_f domain valuation) fs
   | ListF (Ast.Disj, fs) -> List.exists (naive_f domain valuation) fs
-  | Diamond (p, f) -> VSet.exists (fun v -> naive_f domain v f) (naive_p domain valuation p)
+  | Diamond (p, f) -> VSet.exists (fun v -> naive_f domain v f) (naive_p domain (Array.copy valuation) p)
 and naive_p domain valuation = function
   | CallP c -> let (_, ps) = domain in assert (c < Array.length ps); naive_p domain valuation ps.(c)
   | Assign (c, f) -> assert (c < Array.length valuation); valuation.(c) <- naive_f domain valuation f; VSet.singleton valuation

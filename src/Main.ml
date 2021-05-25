@@ -51,6 +51,7 @@ let ground_d g =
 
 module S = Solve
 let solve g =
+  printf "%s\n\n" (Circuit.Print.file g);
   let b = Solve.model_checking g [] in
   printf "%B\n" b
 

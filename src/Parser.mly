@@ -70,19 +70,33 @@ callable:
 
 formula:
 | f = outer_formula { f }
-| f = inner_formula { f }
-outer_formula:
 | l = separated_many_slist(foperator, inner_formula) { Ast.ListF l }
 | vs = var_decls(bfoperator) f = formula { Ast.VarF (fst vs, snd vs, f) }
-inner_formula:
-| LPAREN f = outer_formula RPAREN { f }
+outer_formula:
 | c = callable { Ast.CallF c }
 | TOP { Ast.Top}
 | BOT { Ast.Neg (Ast.Top) }
 | NEG f = inner_formula { Ast.Neg f }
-| LPAREN NEG f = inner_formula RPAREN { Ast.Neg f }
-| LANGLE p = program RANGLE f = inner_formula { Ast.Diamond (p, f) }
+| LANGLE   p = program RANGLE   f = inner_formula { Ast.Diamond (p, f) }
 | LBRACKET p = program RBRACKET f = inner_formula { Ast.Neg (Ast.Diamond (p, Ast.Neg f)) }
+inner_formula:
+| LPAREN l = separated_many_slist(foperator, inner_formula) RPAREN { Ast.ListF l }
+| LPAREN vs = var_decls(bfoperator) f = formula RPAREN { Ast.VarF (fst vs, snd vs, f) }
+| LPAREN f = outer_formula RPAREN { f }
+| f = outer_formula { f }
+(*inner_formula:
+| f = formula { f }
+formula:
+| LPAREN f = formula RPAREN { f }
+| c = callable { Ast.CallF c }
+| TOP { Ast.Top}
+| BOT { Ast.Neg (Ast.Top) }
+| NEG f = formula { Ast.Neg f }
+| LPAREN NEG f = formula RPAREN { Ast.Neg f }
+| l = separated_many_slist(foperator, formula) { Ast.ListF l }
+| vs = var_decls(bfoperator) f = formula { Ast.VarF (fst vs, snd vs, f) }
+| LANGLE   p = program RANGLE f   = formula { Ast.Diamond (p, f) }
+| LBRACKET p = program RBRACKET f = formula { Ast.Neg (Ast.Diamond (p, Ast.Neg f)) }*)
 
 program:
 | p = outer_program { p }
@@ -94,7 +108,7 @@ inner_program:
 | LPAREN p = outer_program RPAREN { p }
 | c = callable { Ast.CallP c }
 | c = callable ASSIGN f = formula { Ast.Assign (c, f) }
-| f = inner_formula TEST { Ast.Test f }
+| f = formula TEST { Ast.Test f }
 | p = inner_program CONVERSE { Ast.Converse p }
 | p = inner_program STAR { Ast.Kleene p }
 

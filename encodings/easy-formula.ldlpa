@@ -1,11 +1,12 @@
 grounding:
 
 formula:
-phi := <a <- \neg (b \and c) \seq pi> ((a \or b) \and \neg \top).
+phi := <pi2> psi.
+psi := (a \or b) \or \neg \top.
 
 program:
-pi := b <- c\and b*.
-
+pi := b <- \neg b*.
+pi2 := (a <- \neg (b \and c) \seq pi) \cup c <- \top.
 
 main:
 phi.
