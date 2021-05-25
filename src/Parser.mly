@@ -82,7 +82,7 @@ outer_formula:
 inner_formula:
 | LPAREN l = separated_many_slist(foperator, inner_formula) RPAREN { Ast.ListF l }
 | LPAREN vs = var_decls(bfoperator) f = formula RPAREN { Ast.VarF (fst vs, snd vs, f) }
-| LPAREN f = outer_formula RPAREN { f }
+| LPAREN f = inner_formula RPAREN { f }
 | f = outer_formula { f }
 (*inner_formula:
 | f = formula { f }
