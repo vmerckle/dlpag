@@ -33,10 +33,11 @@ let state checkpoint : int = match stack checkpoint with
 
 let succeed v = v
 let fail lexbuf checkpoint =
-  let herror = ParserMessages.message (state checkpoint) in
+  let error_nb = state checkpoint in
+  let herror = ParserMessages.message error_nb in
   (*let herror = ParsingErrors.message (state checkpoint) in*)
   let position = print_error lexbuf in
-  let message = sprintf "%s %s" position herror in
+  let message = sprintf "%s %s (error %d)" position herror error_nb in
   raise (ParserError message)
 
 let loop lexbuf result =

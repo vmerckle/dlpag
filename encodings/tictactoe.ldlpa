@@ -19,7 +19,7 @@ afterCorrect := <playThere(1, 1, naught) \seq playThere(2, 2, cross)>nstrategy(7
 afterError   := <playThere(1, 1, naught) \seq playThere(1, 2, cross)>nstrategy(7).
 
 program:
-\forall I J \in dim, P \in player : playThere(I, J, P) := \neg fullThere(I, J)? \seq move(I, J, P) <- \top.
+\forall I J \in dim, P \in player : playThere(I, J, P) := ?\neg fullThere(I, J)? \seq move(I, J, P) <- \top.
 \forall P \in player : play(P) := \bigcup I J \in dim : playThere(I, J, P).
 
 main:
@@ -32,16 +32,16 @@ nstrategy(9).
 %% ...
 %% ...
 %% ...
-%%      o gagne en 9 coups ou moins? non
+%%      o wins in 9 moves or fewer? No
 
 %% afterError
 %% ...
 %% ...
 %% ox.
-%%      o gagne en 7 coups ou moins? oui
+%%      o wins in 7 moves or fewer? Yes
 
 %% afterCorrect
 %% ...
 %% .x.
 %% o..
-%%      o gagne en 7 coups ou moins? non
+%%      o wins in 7 moves or fewer? No
