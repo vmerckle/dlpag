@@ -1,10 +1,10 @@
 open Printf
 
-type callable = Circuit.callable * int
-type formula = Atom of (bool * callable) | Quantifier of (QCIR.quant * callable list * formula) | ListQ of (Ast.foperator * formula list) | Xor of (formula * formula) | Ite of (formula * formula * formula)
+type callable = Circuit.T.callable * int
+type formula = Atom of (bool * callable) | Quantifier of (QCIR.quant * callable list * formula) | ListQ of (Ast.T.foperator * formula list) | Xor of (formula * formula) | Ite of (formula * formula * formula)
 
 type context = { n : int;
-                 vars : Circuit.callable list }
+                 vars : Circuit.T.callable list }
 
 module Print =
 struct
@@ -35,15 +35,15 @@ let new_var =
     (("fresh", []), !counter) in
   new_v
 
-let conj2 x y = ListQ (Ast.Conj, [x; y])
-let top = ListQ (Ast.Conj, [])
-let bottom = ListQ (Ast.Disj, [])
+let conj2 x y = ListQ (Ast.T.Conj, [x; y])
+let top = ListQ (Ast.T.Conj, [])
+let bottom = ListQ (Ast.T.Disj, [])
 
 let assign context vx vy name f =
   let aux othername = if othername <> name then Some (Xor (Atom (false, (othername, vx)), Atom (true, (othername, vy)))) else None in
   let keep_others = List.filter_map aux context.vars in
   let set_one = Xor (Atom (false, (name, vy)), f) in
-  ListQ (Ast.Conj, set_one :: keep_others)
+  ListQ (Ast.T.Conj, set_one :: keep_others)
 
 let make_equiv context vx vy =
   let aux var = Xor (Atom (false, (var, vx)), Atom (true, (var, vy))) in
@@ -51,8 +51,8 @@ let make_equiv context vx vy =
 
 let rec reduction_f context vx = function
   | Formula.CallF (polarity, name) -> Atom (polarity, (name, vx))
-  | Base true -> ListQ (Ast.Conj, [])
-  | Base false -> ListQ (Ast.Disj, [])
+  | Base true -> ListQ (Ast.T.Conj, [])
+  | Base false -> ListQ (Ast.T.Disj, [])
   | ListF (op, fs) -> ListQ (op, List.map (reduction_f context vx) fs)
   | Modal (true, p, f) ->
      let vary, vy = new_valuation context in
@@ -65,24 +65,24 @@ let rec reduction_f context vx = function
 
 and reduction_g context vx vy = function
   | Formula.Assign (name, f) -> assign context vx vy name (reduction_f context vx f)
-  | Test f -> ListQ (Ast.Conj, reduction_f context vx f :: make_equiv context vx vy)
-  | ListP (Ast.U, ps) -> ListQ (Ast.Disj, List.map (reduction_g context vx vy) ps)
-  | ListP (Ast.Seq, ps) -> reduction_i context vx vy ps
+  | Test f -> ListQ (Ast.T.Conj, reduction_f context vx f :: make_equiv context vx vy)
+  | ListP (Ast.T.U, ps) -> ListQ (Ast.T.Disj, List.map (reduction_g context vx vy) ps)
+  | ListP (Ast.T.Seq, ps) -> reduction_i context vx vy ps
   | Converse p -> reduction_g context vy vx p
   | Kleene p -> reduction_h context context.n vx vy (Formula.ListP (U, [Formula.Test (Formula.Base true); p]))
 
 and reduction_h context m vx vy p =
-  if m <= 0 then ListQ (Ast.Disj, reduction_g context vx vy p :: make_equiv context vx vy)
+  if m <= 0 then ListQ (Ast.T.Disj, reduction_g context vx vy p :: make_equiv context vx vy)
   else
     let varz,  vz  = new_valuation context in
     let varx1, vx1 = new_valuation context in
     let vary1, vy1 = new_valuation context in
     let vart = new_var () in
-    let ite_then = ListQ (Ast.Conj, (make_equiv context vx1 vx) @ (make_equiv context vy1 vz)) in
-    let ite_else = ListQ (Ast.Conj, (make_equiv context vx1 vz) @ (make_equiv context vy1 vy)) in
+    let ite_then = ListQ (Ast.T.Conj, (make_equiv context vx1 vx) @ (make_equiv context vy1 vz)) in
+    let ite_else = ListQ (Ast.T.Conj, (make_equiv context vx1 vz) @ (make_equiv context vy1 vy)) in
     let ite = Ite (Atom (true, vart), ite_then, ite_else) in
     let conj = [reduction_h context (m-1) vx1 vy1 p; ite] in
-    Quantifier (QCIR.Exists, varz, Quantifier (QCIR.Forall, [vart], Quantifier (QCIR.Exists, varx1 @ vary1, ListQ (Ast.Conj, conj))))
+    Quantifier (QCIR.Exists, varz, Quantifier (QCIR.Forall, [vart], Quantifier (QCIR.Exists, varx1 @ vary1, ListQ (Ast.T.Conj, conj))))
 
 and reduction_i context vx vy ps = match ps with
   | [] -> assert false
@@ -138,7 +138,7 @@ let to_qcir f =
        (true, gn)
     | ListQ (o, fs) ->
        let ls = List.map aux fs in
-       let op = match o with Ast.Conj -> QCIR.And | Ast.Disj -> QCIR.Or in
+       let op = match o with Ast.T.Conj -> QCIR.And | Ast.T.Disj -> QCIR.Or in
        let g = QCIR.Group (op, ls) in
        let gn = new_gate () in
        Stack.push (gn, g) gates;

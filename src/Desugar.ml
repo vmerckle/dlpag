@@ -1,8 +1,8 @@
 open Printf
 
-type formula = Call of Circuit.callable | Top | Neg of formula | Disj of (formula list) | Diamond of (program * formula)
+type formula = Call of Circuit.T.callable | Top | Neg of formula | Disj of (formula list) | Diamond of (program * formula)
 (*type formula = CallF of Circuit.callable | Top | Neg of formula | ListF of (Ast.foperator * formula list) | Diamond of (program * formula)*)
-and program  = Assign of (Circuit.callable * formula) | Test of formula | ListP of (Ast.poperator * program list) | Converse of program | Kleene of program
+and program  = Assign of (Circuit.T.callable * formula) | Test of formula | ListP of (Ast.T.poperator * program list) | Converse of program | Kleene of program
 
 module F = Formula
 
@@ -11,8 +11,8 @@ let rec formula = function
   | F.CallF (false, c) -> Neg (Call c)
   | F.Base true -> Top
   | F.Base false -> Neg Top
-  | F.ListF (Ast.Disj, fs) -> Disj (List.map formula fs)
-  | F.ListF (Ast.Conj, fs) -> Neg (Disj (List.map (fun f -> Neg (formula f)) fs))
+  | F.ListF (Ast.T.Disj, fs) -> Disj (List.map formula fs)
+  | F.ListF (Ast.T.Conj, fs) -> Neg (Disj (List.map (fun f -> Neg (formula f)) fs))
   | F.Modal (true, p, f) -> Diamond (program p, formula f)
   | F.Modal (false, p, f) -> Neg (Diamond (program p, Neg (formula f)))
 and program = function

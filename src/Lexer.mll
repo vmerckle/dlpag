@@ -37,9 +37,10 @@ and token = parse
   | '(' { P.LPAREN   } | ')' { P.RPAREN   } | '[' { P.LBRACKET } | ']' { P.RBRACKET } | '{' { P.LBRACE   } | '}' { P.RBRACE   } | '<' { P.LANGLE   } | '>' { P.RANGLE   }
   | ".." { P.RANGE }
   | '+' { P.PLUS } | '-' { P.MINUS }
+  | "\\sum" { P.BIGPLUS } | "\\mult" { P.BIGMULT } | "\\max" { P.MAX } | "\\min" { P.MIN }
   | "\\neg" { P.NEG }
   | "<-" { P.ASSIGN } | "?" { P.TEST }  | "^" { P.CONVERSE } | "*" { P.STAR }
-  | ',' { P.COMMA } | ":=" { P.DEFINE } | ':' { P.COLON } | '.' { P.DOT }
+  | ',' { P.COMMA } | ":=" { P.DEFINE } | ':' { P.COLON } | '.' { P.DOT } | '|' { P.MID }
   | "grounding" { P.GROUND } | "formula" { P.FORMULA } | "program" { P.PROGRAM } | "main" { P.MAIN }
   | [' ' '\t'] { token lexbuf }
   | linefeed   { incr_linenum lexbuf; token lexbuf }

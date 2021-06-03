@@ -1,11 +1,11 @@
 open Printf
 
-module CMap = Map.Make (struct type t = Circuit.callable let compare = compare end)
-module CSet = Set.Make (struct type t = Circuit.callable let compare = compare end)
+module CMap = Map.Make (struct type t = Circuit.T.callable let compare = compare end)
+module CSet = Set.Make (struct type t = Circuit.T.callable let compare = compare end)
 
-type formula = CallF of (bool * Circuit.callable) | Base of bool | ListF of (Ast.foperator * formula list) | Modal of (bool * program * formula)
+type formula = CallF of (bool * Circuit.T.callable) | Base of bool | ListF of (Ast.T.foperator * formula list) | Modal of (bool * program * formula)
 (*type formula = CallF of Circuit.callable | Top | Neg of formula | ListF of (Ast.foperator * formula list) | Diamond of (program * formula)*)
-and program  = Assign of (Circuit.callable * formula) | Test of formula | ListP of (Ast.poperator * program list) | Converse of program | Kleene of program
+and program  = Assign of (Circuit.T.callable * formula) | Test of formula | ListP of (Ast.T.poperator * program list) | Converse of program | Kleene of program
 
 module UPrint = Print
 module Print =
@@ -39,13 +39,13 @@ let concat_map_pairs f l =
   (List.rev ones, List.rev twos)
 
 let rec extract_dependencies_f = function
-  | Circuit.CallF c -> [c]
+  | Circuit.T.CallF c -> [c]
   | Top -> []
   | Neg f -> extract_dependencies_f f
   | ListF (_, fs) -> List.concat_map extract_dependencies_f fs
   | Diamond (p, f) -> (extract_dependencies_f f) @(extract_dependencies_p p)
 and extract_dependencies_p = function
-  | Circuit.CallP c -> [c]
+  | Circuit.T.CallP c -> [c]
   | Assign (_, f) | Test f -> extract_dependencies_f f
   | ListP (_, ps) -> List.concat_map extract_dependencies_p ps
   | Converse p | Kleene p -> extract_dependencies_p p
@@ -85,16 +85,16 @@ let find_p (names_f, names_p) name = match CMap.find_opt name names_p with
             | None -> eprintf "error: program macro %s is undefined\n" (Circuit.Print.callable name); assert false
 
 let operator polarity op = if polarity then op else match op with
-  | Ast.Conj -> Ast.Disj
-  | Ast.Disj -> Ast.Conj
+  | Ast.T.Conj -> Ast.T.Disj
+  | Ast.T.Disj -> Ast.T.Conj
 let rec substitute_f polarity (names_map : formula CMap.t * program CMap.t) = function
-  | Circuit.CallF c -> find_f polarity names_map c
+  | Circuit.T.CallF c -> find_f polarity names_map c
   | Top -> Base polarity
   | Neg f -> substitute_f (not polarity) names_map f
   | ListF (op, fs) -> ListF (operator polarity op, List.map (substitute_f polarity names_map) fs)
   | Diamond (p, f) -> Modal (polarity, substitute_p names_map p, substitute_f polarity names_map f)
 and substitute_p names_map = function
-  | Circuit.CallP c -> find_p names_map c
+  | Circuit.T.CallP c -> find_p names_map c
   | Assign (c, f) ->
      if CMap.mem c (fst names_map) || CMap.mem c (snd names_map) then eprintf "type error: trying to assign to %s which isn't an atomic proposition\n" (Circuit.Print.callable c);
      Assign (c, substitute_f true names_map f)
