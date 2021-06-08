@@ -51,6 +51,8 @@ let convert_to_ints (fdecs, pdecs, call) =
 (*  eprintf "%s\n\n%s\n" (Print.unspaces (fun (c, f) -> sprintf "%s  " (Circuit.Print.callable c)) fdecs) (Print.unspaces (fun (f) -> sprintf "%s  " (Circuit.Print.callable f)) (CSet.elements setf));*)
   assert (List.mem call (List.map fst fdecs));
   assert (CSet.for_all (fun c -> List.mem c (List.map fst fdecs)) setf);
+  let undeclared_progs = CSet.filter (fun c -> not (List.mem c (List.map fst pdecs))) setp in
+  if undeclared_progs <> CSet.empty then failwith (sprintf "Error: Undeclared names %s\n" (Print.unspaces Circuit.Print.callable (CSet.elements undeclared_progs)));
   assert (CSet.for_all (fun c -> List.mem c (List.map fst pdecs)) setp);
 (*  assert (List.length fdecs > 0 && List.length pdecs > 0);*)
   let array_fdecs = Array.of_list fdecs

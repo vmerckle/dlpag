@@ -1,6 +1,6 @@
 file: GROUND COLON CNAME DEFINE CNAME DOT VNAME
 ##
-## Ends in an error in state: 175.
+## Ends in an error in state: 181.
 ##
 ## list(decl(set)) -> decl(set) . list(decl(set)) [ FORMULA ]
 ##
@@ -12,7 +12,7 @@ file: GROUND COLON CNAME DEFINE CNAME DOT VNAME
 
 file: GROUND COLON CNAME DEFINE CNAME TEST
 ##
-## Ends in an error in state: 179.
+## Ends in an error in state: 185.
 ##
 ## decl(set) -> callable DEFINE set . DOT [ FORMULA FORALL CNAME ]
 ##
@@ -24,14 +24,14 @@ file: GROUND COLON CNAME DEFINE CNAME TEST
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
+## In state 62, spurious reduction of production set -> callable
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON CNAME DEFINE LBRACE LPAREN TOP
 ##
-## Ends in an error in state: 32.
+## Ends in an error in state: 37.
 ##
 ## inner_expr -> LPAREN . expr RPAREN [ STAR RBRACE RANGE PLUS MINUS MID COMMA ]
 ## tuple -> LPAREN . expr COMMA separated_nonempty_list(COMMA,expr) RPAREN [ RBRACE MID COMMA ]
@@ -44,7 +44,7 @@ file: GROUND COLON CNAME DEFINE LBRACE LPAREN TOP
 
 file: GROUND COLON CNAME DEFINE LBRACE LPAREN VNAME COMMA TOP
 ##
-## Ends in an error in state: 34.
+## Ends in an error in state: 39.
 ##
 ## tuple -> LPAREN expr COMMA . separated_nonempty_list(COMMA,expr) RPAREN [ RBRACE MID COMMA ]
 ##
@@ -56,7 +56,7 @@ file: GROUND COLON CNAME DEFINE LBRACE LPAREN VNAME COMMA TOP
 
 file: GROUND COLON CNAME DEFINE LBRACE LPAREN VNAME RBRACE
 ##
-## Ends in an error in state: 33.
+## Ends in an error in state: 38.
 ##
 ## inner_expr -> LPAREN expr . RPAREN [ STAR RBRACE RANGE PLUS MINUS MID COMMA ]
 ## tuple -> LPAREN expr . COMMA separated_nonempty_list(COMMA,expr) RPAREN [ RBRACE MID COMMA ]
@@ -68,14 +68,14 @@ file: GROUND COLON CNAME DEFINE LBRACE LPAREN VNAME RBRACE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 13, spurious reduction of production expr -> inner_expr
+## In state 18, spurious reduction of production expr -> inner_expr
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON CNAME DEFINE LBRACE TOP
 ##
-## Ends in an error in state: 31.
+## Ends in an error in state: 36.
 ##
 ## set -> LBRACE . separated_nonempty_list(COMMA,tuple) RBRACE [ RBRACE DOT COMMA COLON ]
 ## set -> LBRACE . separated_nonempty_list(COMMA,tuple) MID vdecls RBRACE [ RBRACE DOT COMMA COLON ]
@@ -88,7 +88,7 @@ file: GROUND COLON CNAME DEFINE LBRACE TOP
 
 file: GROUND COLON CNAME DEFINE LBRACE VNAME COMMA TOP
 ##
-## Ends in an error in state: 41.
+## Ends in an error in state: 46.
 ##
 ## separated_nonempty_list(COMMA,tuple) -> tuple COMMA . separated_nonempty_list(COMMA,tuple) [ RBRACE MID ]
 ##
@@ -100,7 +100,7 @@ file: GROUND COLON CNAME DEFINE LBRACE VNAME COMMA TOP
 
 file: GROUND COLON CNAME DEFINE LBRACE VNAME MID TOP
 ##
-## Ends in an error in state: 48.
+## Ends in an error in state: 53.
 ##
 ## set -> LBRACE separated_nonempty_list(COMMA,tuple) MID . vdecls RBRACE [ RBRACE DOT COMMA COLON ]
 ##
@@ -112,7 +112,7 @@ file: GROUND COLON CNAME DEFINE LBRACE VNAME MID TOP
 
 file: GROUND COLON CNAME DEFINE LBRACE VNAME MID VNAME IN CNAME COLON
 ##
-## Ends in an error in state: 57.
+## Ends in an error in state: 63.
 ##
 ## set -> LBRACE separated_nonempty_list(COMMA,tuple) MID vdecls . RBRACE [ RBRACE DOT COMMA COLON ]
 ##
@@ -124,17 +124,17 @@ file: GROUND COLON CNAME DEFINE LBRACE VNAME MID VNAME IN CNAME COLON
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON CNAME DEFINE LBRACE VNAME RANGE CNAME RPAREN
 ##
-## Ends in an error in state: 40.
+## Ends in an error in state: 45.
 ##
 ## separated_nonempty_list(COMMA,tuple) -> tuple . [ RBRACE MID ]
 ## separated_nonempty_list(COMMA,tuple) -> tuple . COMMA separated_nonempty_list(COMMA,tuple) [ RBRACE MID ]
@@ -146,15 +146,15 @@ file: GROUND COLON CNAME DEFINE LBRACE VNAME RANGE CNAME RPAREN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 13, spurious reduction of production expr -> inner_expr
-## In state 45, spurious reduction of production tuple -> expr RANGE expr
+## In state 18, spurious reduction of production expr -> inner_expr
+## In state 50, spurious reduction of production tuple -> expr RANGE expr
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON CNAME DEFINE LBRACE VNAME RANGE TOP
 ##
-## Ends in an error in state: 44.
+## Ends in an error in state: 49.
 ##
 ## tuple -> expr RANGE . expr [ RBRACE MID COMMA ]
 ##
@@ -166,7 +166,7 @@ file: GROUND COLON CNAME DEFINE LBRACE VNAME RANGE TOP
 
 file: GROUND COLON CNAME DEFINE LBRACE VNAME RPAREN
 ##
-## Ends in an error in state: 43.
+## Ends in an error in state: 48.
 ##
 ## tuple -> expr . [ RBRACE MID COMMA ]
 ## tuple -> expr . RANGE expr [ RBRACE MID COMMA ]
@@ -178,14 +178,14 @@ file: GROUND COLON CNAME DEFINE LBRACE VNAME RPAREN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 13, spurious reduction of production expr -> inner_expr
+## In state 18, spurious reduction of production expr -> inner_expr
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON CNAME DEFINE VNAME
 ##
-## Ends in an error in state: 178.
+## Ends in an error in state: 184.
 ##
 ## decl(set) -> callable DEFINE . set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -195,55 +195,9 @@ file: GROUND COLON CNAME DEFINE VNAME
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
-file: GROUND COLON CNAME LPAREN BIGPLUS TOP
-##
-## Ends in an error in state: 28.
-##
-## expr -> beoperator . vdecls COLON expr [ RPAREN RBRACE RANGE MID COMMA ]
-##
-## The known suffix of the stack is as follows:
-## beoperator
-##
-
-<YOUR SYNTAX ERROR MESSAGE HERE>
-
-file: GROUND COLON CNAME LPAREN BIGPLUS VNAME IN CNAME COLON TOP
-##
-## Ends in an error in state: 65.
-##
-## expr -> beoperator vdecls COLON . expr [ RPAREN RBRACE RANGE MID COMMA ]
-##
-## The known suffix of the stack is as follows:
-## beoperator vdecls COLON
-##
-
-<YOUR SYNTAX ERROR MESSAGE HERE>
-
-file: GROUND COLON CNAME LPAREN BIGPLUS VNAME IN CNAME RBRACE
-##
-## Ends in an error in state: 64.
-##
-## expr -> beoperator vdecls . COLON expr [ RPAREN RBRACE RANGE MID COMMA ]
-##
-## The known suffix of the stack is as follows:
-## beoperator vdecls
-##
-## WARNING: This example involves spurious reductions.
-## This implies that, although the LR(1) items shown above provide an
-## accurate view of the past (what has been recognized so far), they
-## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
-##
-
-<YOUR SYNTAX ERROR MESSAGE HERE>
-
 file: GROUND COLON CNAME LPAREN LPAREN TOP
 ##
-## Ends in an error in state: 7.
+## Ends in an error in state: 11.
 ##
 ## inner_expr -> LPAREN . expr RPAREN [ STAR RPAREN RBRACE RANGE PLUS MINUS MID COMMA ]
 ##
@@ -255,7 +209,7 @@ file: GROUND COLON CNAME LPAREN LPAREN TOP
 
 file: GROUND COLON CNAME LPAREN LPAREN VNAME RBRACE
 ##
-## Ends in an error in state: 26.
+## Ends in an error in state: 31.
 ##
 ## inner_expr -> LPAREN expr . RPAREN [ STAR RPAREN RBRACE RANGE PLUS MINUS MID COMMA ]
 ##
@@ -266,7 +220,65 @@ file: GROUND COLON CNAME LPAREN LPAREN VNAME RBRACE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 13, spurious reduction of production expr -> inner_expr
+## In state 18, spurious reduction of production expr -> inner_expr
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON CNAME LPAREN MIN TOP
+##
+## Ends in an error in state: 33.
+##
+## expr -> beoperator . vdecls COLON expr [ RPAREN RBRACE RANGE MID COMMA ]
+##
+## The known suffix of the stack is as follows:
+## beoperator
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON CNAME LPAREN MIN VNAME IN CNAME COLON TOP
+##
+## Ends in an error in state: 71.
+##
+## expr -> beoperator vdecls COLON . expr [ RPAREN RBRACE RANGE MID COMMA ]
+##
+## The known suffix of the stack is as follows:
+## beoperator vdecls COLON
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON CNAME LPAREN MIN VNAME IN CNAME RBRACE
+##
+## Ends in an error in state: 70.
+##
+## expr -> beoperator vdecls . COLON expr [ RPAREN RBRACE RANGE MID COMMA ]
+##
+## The known suffix of the stack is as follows:
+## beoperator vdecls
+##
+## WARNING: This example involves spurious reductions.
+## This implies that, although the LR(1) items shown above provide an
+## accurate view of the past (what has been recognized so far), they
+## may provide an INCOMPLETE view of the future (what was expected next).
+## In state 4, spurious reduction of production callable -> CNAME
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON CNAME LPAREN MINUS VNAME
+##
+## Ends in an error in state: 7.
+##
+## inner_expr -> MINUS . INT [ STAR RPAREN RBRACE RANGE PLUS MINUS MID COMMA ]
+##
+## The known suffix of the stack is as follows:
+## MINUS
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
@@ -285,7 +297,7 @@ file: GROUND COLON CNAME LPAREN TOP
 
 file: GROUND COLON CNAME LPAREN VNAME COMMA TOP
 ##
-## Ends in an error in state: 38.
+## Ends in an error in state: 43.
 ##
 ## separated_nonempty_list(COMMA,expr) -> expr COMMA . separated_nonempty_list(COMMA,expr) [ RPAREN ]
 ##
@@ -297,7 +309,7 @@ file: GROUND COLON CNAME LPAREN VNAME COMMA TOP
 
 file: GROUND COLON CNAME LPAREN VNAME MINUS TOP
 ##
-## Ends in an error in state: 16.
+## Ends in an error in state: 21.
 ##
 ## separated_many_slist(MINUS,inner_expr) -> inner_expr MINUS . separated_nonempty_list(MINUS,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
 ##
@@ -309,7 +321,7 @@ file: GROUND COLON CNAME LPAREN VNAME MINUS TOP
 
 file: GROUND COLON CNAME LPAREN VNAME MINUS VNAME MINUS TOP
 ##
-## Ends in an error in state: 19.
+## Ends in an error in state: 24.
 ##
 ## separated_nonempty_list(MINUS,inner_expr) -> inner_expr MINUS . separated_nonempty_list(MINUS,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
 ##
@@ -321,7 +333,7 @@ file: GROUND COLON CNAME LPAREN VNAME MINUS VNAME MINUS TOP
 
 file: GROUND COLON CNAME LPAREN VNAME MINUS VNAME VNAME
 ##
-## Ends in an error in state: 18.
+## Ends in an error in state: 23.
 ##
 ## separated_nonempty_list(MINUS,inner_expr) -> inner_expr . [ RPAREN RBRACE RANGE MID COMMA ]
 ## separated_nonempty_list(MINUS,inner_expr) -> inner_expr . MINUS separated_nonempty_list(MINUS,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
@@ -334,7 +346,7 @@ file: GROUND COLON CNAME LPAREN VNAME MINUS VNAME VNAME
 
 file: GROUND COLON CNAME LPAREN VNAME RBRACE
 ##
-## Ends in an error in state: 37.
+## Ends in an error in state: 42.
 ##
 ## separated_nonempty_list(COMMA,expr) -> expr . [ RPAREN ]
 ## separated_nonempty_list(COMMA,expr) -> expr . COMMA separated_nonempty_list(COMMA,expr) [ RPAREN ]
@@ -346,14 +358,14 @@ file: GROUND COLON CNAME LPAREN VNAME RBRACE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 13, spurious reduction of production expr -> inner_expr
+## In state 18, spurious reduction of production expr -> inner_expr
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON CNAME LPAREN VNAME STAR TOP
 ##
-## Ends in an error in state: 21.
+## Ends in an error in state: 26.
 ##
 ## separated_many_slist(eoperator,inner_expr) -> inner_expr eoperator . separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
 ##
@@ -365,7 +377,7 @@ file: GROUND COLON CNAME LPAREN VNAME STAR TOP
 
 file: GROUND COLON CNAME LPAREN VNAME STAR VNAME STAR TOP
 ##
-## Ends in an error in state: 24.
+## Ends in an error in state: 29.
 ##
 ## separated_nonempty_list(eoperator,inner_expr) -> inner_expr eoperator . separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
 ##
@@ -377,7 +389,7 @@ file: GROUND COLON CNAME LPAREN VNAME STAR VNAME STAR TOP
 
 file: GROUND COLON CNAME LPAREN VNAME STAR VNAME VNAME
 ##
-## Ends in an error in state: 23.
+## Ends in an error in state: 28.
 ##
 ## separated_nonempty_list(eoperator,inner_expr) -> inner_expr . [ RPAREN RBRACE RANGE MID COMMA ]
 ## separated_nonempty_list(eoperator,inner_expr) -> inner_expr . eoperator separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
@@ -390,7 +402,7 @@ file: GROUND COLON CNAME LPAREN VNAME STAR VNAME VNAME
 
 file: GROUND COLON CNAME LPAREN VNAME VNAME
 ##
-## Ends in an error in state: 13.
+## Ends in an error in state: 18.
 ##
 ## expr -> inner_expr . [ RPAREN RBRACE RANGE MID COMMA ]
 ## separated_many_slist(MINUS,inner_expr) -> inner_expr . MINUS separated_nonempty_list(MINUS,inner_expr) [ RPAREN RBRACE RANGE MID COMMA ]
@@ -404,7 +416,7 @@ file: GROUND COLON CNAME LPAREN VNAME VNAME
 
 file: GROUND COLON CNAME TEST
 ##
-## Ends in an error in state: 177.
+## Ends in an error in state: 183.
 ##
 ## decl(set) -> callable . DEFINE set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -435,9 +447,9 @@ file: GROUND COLON CNAME VNAME
 
 file: GROUND COLON FORALL LPAREN TOP
 ##
-## Ends in an error in state: 49.
+## Ends in an error in state: 54.
 ##
-## vdecl -> LPAREN . nonempty_list(VNAME) RPAREN IN set [ RBRACE COMMA COLON ]
+## vdecl -> LPAREN . separated_nonempty_list(COMMA,VNAME) RPAREN IN set [ RBRACE COMMA COLON ]
 ##
 ## The known suffix of the stack is as follows:
 ## LPAREN
@@ -445,36 +457,48 @@ file: GROUND COLON FORALL LPAREN TOP
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
-file: GROUND COLON FORALL LPAREN VNAME RPAREN IN VNAME
+file: GROUND COLON FORALL LPAREN VNAME COMMA TOP
 ##
-## Ends in an error in state: 54.
+## Ends in an error in state: 56.
 ##
-## vdecl -> LPAREN nonempty_list(VNAME) RPAREN IN . set [ RBRACE COMMA COLON ]
+## separated_nonempty_list(COMMA,VNAME) -> VNAME COMMA . separated_nonempty_list(COMMA,VNAME) [ RPAREN ]
 ##
 ## The known suffix of the stack is as follows:
-## LPAREN nonempty_list(VNAME) RPAREN IN
+## VNAME COMMA
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON FORALL LPAREN VNAME RPAREN IN VNAME
+##
+## Ends in an error in state: 60.
+##
+## vdecl -> LPAREN separated_nonempty_list(COMMA,VNAME) RPAREN IN . set [ RBRACE COMMA COLON ]
+##
+## The known suffix of the stack is as follows:
+## LPAREN separated_nonempty_list(COMMA,VNAME) RPAREN IN
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORALL LPAREN VNAME RPAREN VNAME
 ##
-## Ends in an error in state: 53.
+## Ends in an error in state: 59.
 ##
-## vdecl -> LPAREN nonempty_list(VNAME) RPAREN . IN set [ RBRACE COMMA COLON ]
+## vdecl -> LPAREN separated_nonempty_list(COMMA,VNAME) RPAREN . IN set [ RBRACE COMMA COLON ]
 ##
 ## The known suffix of the stack is as follows:
-## LPAREN nonempty_list(VNAME) RPAREN
+## LPAREN separated_nonempty_list(COMMA,VNAME) RPAREN
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
-file: GROUND COLON FORALL LPAREN VNAME TOP
+file: GROUND COLON FORALL LPAREN VNAME VNAME
 ##
-## Ends in an error in state: 50.
+## Ends in an error in state: 55.
 ##
-## nonempty_list(VNAME) -> VNAME . [ RPAREN ]
-## nonempty_list(VNAME) -> VNAME . nonempty_list(VNAME) [ RPAREN ]
+## separated_nonempty_list(COMMA,VNAME) -> VNAME . [ RPAREN ]
+## separated_nonempty_list(COMMA,VNAME) -> VNAME . COMMA separated_nonempty_list(COMMA,VNAME) [ RPAREN ]
 ##
 ## The known suffix of the stack is as follows:
 ## VNAME
@@ -484,7 +508,7 @@ file: GROUND COLON FORALL LPAREN VNAME TOP
 
 file: GROUND COLON FORALL TOP
 ##
-## Ends in an error in state: 168.
+## Ends in an error in state: 174.
 ##
 ## decl(set) -> doperator . vdecls COLON callable DEFINE set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -496,7 +520,7 @@ file: GROUND COLON FORALL TOP
 
 file: GROUND COLON FORALL VNAME IN CNAME COLON CNAME DEFINE CNAME TEST
 ##
-## Ends in an error in state: 173.
+## Ends in an error in state: 179.
 ##
 ## decl(set) -> doperator vdecls COLON callable DEFINE set . DOT [ FORMULA FORALL CNAME ]
 ##
@@ -508,14 +532,14 @@ file: GROUND COLON FORALL VNAME IN CNAME COLON CNAME DEFINE CNAME TEST
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
+## In state 62, spurious reduction of production set -> callable
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORALL VNAME IN CNAME COLON CNAME DEFINE VNAME
 ##
-## Ends in an error in state: 172.
+## Ends in an error in state: 178.
 ##
 ## decl(set) -> doperator vdecls COLON callable DEFINE . set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -527,7 +551,7 @@ file: GROUND COLON FORALL VNAME IN CNAME COLON CNAME DEFINE VNAME
 
 file: GROUND COLON FORALL VNAME IN CNAME COLON CNAME TEST
 ##
-## Ends in an error in state: 171.
+## Ends in an error in state: 177.
 ##
 ## decl(set) -> doperator vdecls COLON callable . DEFINE set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -545,7 +569,7 @@ file: GROUND COLON FORALL VNAME IN CNAME COLON CNAME TEST
 
 file: GROUND COLON FORALL VNAME IN CNAME COLON VNAME
 ##
-## Ends in an error in state: 170.
+## Ends in an error in state: 176.
 ##
 ## decl(set) -> doperator vdecls COLON . callable DEFINE set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -557,7 +581,7 @@ file: GROUND COLON FORALL VNAME IN CNAME COLON VNAME
 
 file: GROUND COLON FORALL VNAME IN CNAME COMMA TOP
 ##
-## Ends in an error in state: 60.
+## Ends in an error in state: 66.
 ##
 ## separated_nonempty_list(COMMA,vdecl) -> vdecl COMMA . separated_nonempty_list(COMMA,vdecl) [ RBRACE COLON ]
 ##
@@ -569,7 +593,7 @@ file: GROUND COLON FORALL VNAME IN CNAME COMMA TOP
 
 file: GROUND COLON FORALL VNAME IN CNAME RBRACE
 ##
-## Ends in an error in state: 169.
+## Ends in an error in state: 175.
 ##
 ## decl(set) -> doperator vdecls . COLON callable DEFINE set DOT [ FORMULA FORALL CNAME ]
 ##
@@ -581,17 +605,17 @@ file: GROUND COLON FORALL VNAME IN CNAME RBRACE
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORALL VNAME IN CNAME TEST
 ##
-## Ends in an error in state: 59.
+## Ends in an error in state: 65.
 ##
 ## separated_nonempty_list(COMMA,vdecl) -> vdecl . [ RBRACE COLON ]
 ## separated_nonempty_list(COMMA,vdecl) -> vdecl . COMMA separated_nonempty_list(COMMA,vdecl) [ RBRACE COLON ]
@@ -604,15 +628,15 @@ file: GROUND COLON FORALL VNAME IN CNAME TEST
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORALL VNAME IN VNAME
 ##
-## Ends in an error in state: 30.
+## Ends in an error in state: 35.
 ##
 ## vdecl -> VNAME IN . set [ RBRACE COMMA COLON ]
 ##
@@ -624,7 +648,7 @@ file: GROUND COLON FORALL VNAME IN VNAME
 
 file: GROUND COLON FORALL VNAME VNAME
 ##
-## Ends in an error in state: 29.
+## Ends in an error in state: 34.
 ##
 ## vdecl -> VNAME . IN set [ RBRACE COMMA COLON ]
 ##
@@ -636,7 +660,7 @@ file: GROUND COLON FORALL VNAME VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE BIGDISJ TOP
 ##
-## Ends in an error in state: 133.
+## Ends in an error in state: 139.
 ##
 ## inner_formula -> bfoperator . vdecls COLON inner_formula [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -648,7 +672,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE BIGDISJ TOP
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE BIGDISJ VNAME IN CNAME COLON VNAME
 ##
-## Ends in an error in state: 135.
+## Ends in an error in state: 141.
 ##
 ## inner_formula -> bfoperator vdecls COLON . inner_formula [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -660,7 +684,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE BIGDISJ VNAME IN CNAME COLON VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE BIGDISJ VNAME IN CNAME RBRACE
 ##
-## Ends in an error in state: 134.
+## Ends in an error in state: 140.
 ##
 ## inner_formula -> bfoperator vdecls . COLON inner_formula [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -672,17 +696,17 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE BIGDISJ VNAME IN CNAME RBRACE
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE BOT DOT VNAME
 ##
-## Ends in an error in state: 162.
+## Ends in an error in state: 168.
 ##
 ## list(decl(formula)) -> decl(formula) . list(decl(formula)) [ PROGRAM ]
 ##
@@ -694,7 +718,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE BOT DOT VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE CNAME RANGLE VNAME
 ##
-## Ends in an error in state: 111.
+## Ends in an error in state: 117.
 ##
 ## outer_formula -> LANGLE program RANGLE . outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -706,7 +730,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE CNAME RANGLE VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE CNAME RPAREN
 ##
-## Ends in an error in state: 110.
+## Ends in an error in state: 116.
 ##
 ## outer_formula -> LANGLE program . RANGLE outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -718,16 +742,16 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE CNAME RPAREN
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 107, spurious reduction of production outer_program -> callable
-## In state 97, spurious reduction of production inner_program -> outer_program
-## In state 115, spurious reduction of production program -> inner_program
+## In state 113, spurious reduction of production outer_program -> callable
+## In state 103, spurious reduction of production inner_program -> outer_program
+## In state 121, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE VNAME
 ##
-## Ends in an error in state: 109.
+## Ends in an error in state: 115.
 ##
 ## outer_formula -> LANGLE . program RANGLE outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -739,7 +763,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LANGLE VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET BIGSEQ TOP
 ##
-## Ends in an error in state: 116.
+## Ends in an error in state: 122.
 ##
 ## inner_program -> bpoperator . vdecls COLON inner_program [ RPAREN RBRACKET RANGLE DOT ]
 ##
@@ -751,7 +775,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET BIGSEQ TOP
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET BIGSEQ VNAME IN CNAME COLON VNAME
 ##
-## Ends in an error in state: 118.
+## Ends in an error in state: 124.
 ##
 ## inner_program -> bpoperator vdecls COLON . inner_program [ RPAREN RBRACKET RANGLE DOT ]
 ##
@@ -763,7 +787,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET BIGSEQ VNAME IN CNAME COL
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET BIGSEQ VNAME IN CNAME RBRACE
 ##
-## Ends in an error in state: 117.
+## Ends in an error in state: 123.
 ##
 ## inner_program -> bpoperator vdecls . COLON inner_program [ RPAREN RBRACKET RANGLE DOT ]
 ##
@@ -775,17 +799,17 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET BIGSEQ VNAME IN CNAME RBR
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME ASSIGN VNAME
 ##
-## Ends in an error in state: 108.
+## Ends in an error in state: 114.
 ##
 ## outer_program -> callable ASSIGN . formula [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -797,7 +821,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME ASSIGN VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME RBRACKET VNAME
 ##
-## Ends in an error in state: 140.
+## Ends in an error in state: 146.
 ##
 ## outer_formula -> LBRACKET program RBRACKET . outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -809,7 +833,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME RBRACKET VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME RPAREN
 ##
-## Ends in an error in state: 139.
+## Ends in an error in state: 145.
 ##
 ## outer_formula -> LBRACKET program . RBRACKET outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -821,16 +845,16 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME RPAREN
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 107, spurious reduction of production outer_program -> callable
-## In state 97, spurious reduction of production inner_program -> outer_program
-## In state 115, spurious reduction of production program -> inner_program
+## In state 113, spurious reduction of production outer_program -> callable
+## In state 103, spurious reduction of production inner_program -> outer_program
+## In state 121, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME SEQ CNAME SEQ VNAME
 ##
-## Ends in an error in state: 105.
+## Ends in an error in state: 111.
 ##
 ## separated_nonempty_list(poperator,outer_program) -> outer_program poperator . separated_nonempty_list(poperator,outer_program) [ RPAREN RBRACKET RANGLE DOT ]
 ##
@@ -842,7 +866,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME SEQ CNAME SEQ VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME SEQ CNAME STAR VNAME
 ##
-## Ends in an error in state: 104.
+## Ends in an error in state: 110.
 ##
 ## outer_program -> outer_program . CONVERSE [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ## outer_program -> outer_program . STAR [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
@@ -857,7 +881,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME SEQ CNAME STAR VNAM
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME SEQ VNAME
 ##
-## Ends in an error in state: 102.
+## Ends in an error in state: 108.
 ##
 ## separated_many_slist(poperator,outer_program) -> outer_program poperator . separated_nonempty_list(poperator,outer_program) [ RPAREN RBRACKET RANGLE DOT ]
 ##
@@ -869,7 +893,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME SEQ VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME STAR VNAME
 ##
-## Ends in an error in state: 97.
+## Ends in an error in state: 103.
 ##
 ## inner_program -> outer_program . [ RPAREN RBRACKET RANGLE DOT ]
 ## outer_program -> outer_program . CONVERSE [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
@@ -884,7 +908,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME STAR VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME TEST
 ##
-## Ends in an error in state: 107.
+## Ends in an error in state: 113.
 ##
 ## outer_program -> callable . [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ## outer_program -> callable . ASSIGN formula [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
@@ -903,7 +927,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET CNAME TEST
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET LPAREN CNAME RBRACKET
 ##
-## Ends in an error in state: 137.
+## Ends in an error in state: 143.
 ##
 ## outer_program -> LPAREN inner_program . RPAREN [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -915,15 +939,15 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET LPAREN CNAME RBRACKET
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 107, spurious reduction of production outer_program -> callable
-## In state 97, spurious reduction of production inner_program -> outer_program
+## In state 113, spurious reduction of production outer_program -> callable
+## In state 103, spurious reduction of production inner_program -> outer_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET LPAREN VNAME
 ##
-## Ends in an error in state: 93.
+## Ends in an error in state: 99.
 ##
 ## outer_program -> LPAREN . inner_program RPAREN [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -935,7 +959,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET LPAREN VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET TEST TOP VNAME
 ##
-## Ends in an error in state: 145.
+## Ends in an error in state: 151.
 ##
 ## outer_program -> TEST outer_formula . TEST [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -947,7 +971,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET TEST TOP VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET TEST VNAME
 ##
-## Ends in an error in state: 88.
+## Ends in an error in state: 94.
 ##
 ## outer_program -> TEST . outer_formula TEST [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -959,7 +983,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET TEST VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET VNAME
 ##
-## Ends in an error in state: 92.
+## Ends in an error in state: 98.
 ##
 ## outer_formula -> LBRACKET . program RBRACKET outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -971,7 +995,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LBRACKET VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LPAREN TOP STAR
 ##
-## Ends in an error in state: 142.
+## Ends in an error in state: 148.
 ##
 ## outer_formula -> LPAREN inner_formula . RPAREN [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -982,14 +1006,14 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LPAREN TOP STAR
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 123, spurious reduction of production inner_formula -> outer_formula
+## In state 129, spurious reduction of production inner_formula -> outer_formula
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE LPAREN VNAME
 ##
-## Ends in an error in state: 91.
+## Ends in an error in state: 97.
 ##
 ## outer_formula -> LPAREN . inner_formula RPAREN [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -1001,7 +1025,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE LPAREN VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE NEG VNAME
 ##
-## Ends in an error in state: 90.
+## Ends in an error in state: 96.
 ##
 ## outer_formula -> NEG . outer_formula [ TEST STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT DISJ CONVERSE CONJ ]
 ##
@@ -1013,7 +1037,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE NEG VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE TOP DISJ TOP DISJ VNAME
 ##
-## Ends in an error in state: 129.
+## Ends in an error in state: 135.
 ##
 ## separated_nonempty_list(foperator,outer_formula) -> outer_formula foperator . separated_nonempty_list(foperator,outer_formula) [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -1025,7 +1049,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE TOP DISJ TOP DISJ VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE TOP DISJ TOP VNAME
 ##
-## Ends in an error in state: 128.
+## Ends in an error in state: 134.
 ##
 ## separated_nonempty_list(foperator,outer_formula) -> outer_formula . [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ## separated_nonempty_list(foperator,outer_formula) -> outer_formula . foperator separated_nonempty_list(foperator,outer_formula) [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
@@ -1038,7 +1062,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE TOP DISJ TOP VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE TOP DISJ VNAME
 ##
-## Ends in an error in state: 126.
+## Ends in an error in state: 132.
 ##
 ## separated_many_slist(foperator,outer_formula) -> outer_formula foperator . separated_nonempty_list(foperator,outer_formula) [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ##
@@ -1050,7 +1074,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE TOP DISJ VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE TOP STAR
 ##
-## Ends in an error in state: 166.
+## Ends in an error in state: 172.
 ##
 ## decl(formula) -> callable DEFINE formula . DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1061,15 +1085,15 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE TOP STAR
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 123, spurious reduction of production inner_formula -> outer_formula
-## In state 131, spurious reduction of production formula -> inner_formula
+## In state 129, spurious reduction of production inner_formula -> outer_formula
+## In state 137, spurious reduction of production formula -> inner_formula
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE TOP VNAME
 ##
-## Ends in an error in state: 123.
+## Ends in an error in state: 129.
 ##
 ## inner_formula -> outer_formula . [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
 ## separated_many_slist(foperator,outer_formula) -> outer_formula . foperator separated_nonempty_list(foperator,outer_formula) [ STAR SEQ RPAREN RBRACKET RANGLE NONDET DOT CONVERSE ]
@@ -1082,7 +1106,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE TOP VNAME
 
 file: GROUND COLON FORMULA COLON CNAME DEFINE VNAME
 ##
-## Ends in an error in state: 165.
+## Ends in an error in state: 171.
 ##
 ## decl(formula) -> callable DEFINE . formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1094,7 +1118,7 @@ file: GROUND COLON FORMULA COLON CNAME DEFINE VNAME
 
 file: GROUND COLON FORMULA COLON CNAME TEST
 ##
-## Ends in an error in state: 164.
+## Ends in an error in state: 170.
 ##
 ## decl(formula) -> callable . DEFINE formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1112,7 +1136,7 @@ file: GROUND COLON FORMULA COLON CNAME TEST
 
 file: GROUND COLON FORMULA COLON FORALL TOP
 ##
-## Ends in an error in state: 155.
+## Ends in an error in state: 161.
 ##
 ## decl(formula) -> doperator . vdecls COLON callable DEFINE formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1124,7 +1148,7 @@ file: GROUND COLON FORMULA COLON FORALL TOP
 
 file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME DEFINE TOP STAR
 ##
-## Ends in an error in state: 160.
+## Ends in an error in state: 166.
 ##
 ## decl(formula) -> doperator vdecls COLON callable DEFINE formula . DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1135,15 +1159,15 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME DEFINE TOP ST
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 123, spurious reduction of production inner_formula -> outer_formula
-## In state 131, spurious reduction of production formula -> inner_formula
+## In state 129, spurious reduction of production inner_formula -> outer_formula
+## In state 137, spurious reduction of production formula -> inner_formula
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME DEFINE VNAME
 ##
-## Ends in an error in state: 159.
+## Ends in an error in state: 165.
 ##
 ## decl(formula) -> doperator vdecls COLON callable DEFINE . formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1155,7 +1179,7 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME DEFINE VNAME
 
 file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME TEST
 ##
-## Ends in an error in state: 158.
+## Ends in an error in state: 164.
 ##
 ## decl(formula) -> doperator vdecls COLON callable . DEFINE formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1173,7 +1197,7 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON CNAME TEST
 
 file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON VNAME
 ##
-## Ends in an error in state: 157.
+## Ends in an error in state: 163.
 ##
 ## decl(formula) -> doperator vdecls COLON . callable DEFINE formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1185,7 +1209,7 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME COLON VNAME
 
 file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME RBRACE
 ##
-## Ends in an error in state: 156.
+## Ends in an error in state: 162.
 ##
 ## decl(formula) -> doperator vdecls . COLON callable DEFINE formula DOT [ PROGRAM FORALL CNAME ]
 ##
@@ -1197,17 +1221,17 @@ file: GROUND COLON FORMULA COLON FORALL VNAME IN CNAME RBRACE
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE CNAME DOT VNAME
 ##
-## Ends in an error in state: 149.
+## Ends in an error in state: 155.
 ##
 ## list(decl(program)) -> decl(program) . list(decl(program)) [ MAIN ]
 ##
@@ -1219,7 +1243,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE CNAME DOT VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE CNAME RPAREN
 ##
-## Ends in an error in state: 153.
+## Ends in an error in state: 159.
 ##
 ## decl(program) -> callable DEFINE program . DOT [ MAIN FORALL CNAME ]
 ##
@@ -1231,16 +1255,16 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE CNAME RPAREN
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 107, spurious reduction of production outer_program -> callable
-## In state 97, spurious reduction of production inner_program -> outer_program
-## In state 115, spurious reduction of production program -> inner_program
+## In state 113, spurious reduction of production outer_program -> callable
+## In state 103, spurious reduction of production inner_program -> outer_program
+## In state 121, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE VNAME
 ##
-## Ends in an error in state: 152.
+## Ends in an error in state: 158.
 ##
 ## decl(program) -> callable DEFINE . program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1252,7 +1276,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME DEFINE VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME TEST
 ##
-## Ends in an error in state: 151.
+## Ends in an error in state: 157.
 ##
 ## decl(program) -> callable . DEFINE program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1270,7 +1294,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON CNAME TEST
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL TOP
 ##
-## Ends in an error in state: 83.
+## Ends in an error in state: 89.
 ##
 ## decl(program) -> doperator . vdecls COLON callable DEFINE program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1282,7 +1306,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL TOP
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME DEFINE CNAME RPAREN
 ##
-## Ends in an error in state: 147.
+## Ends in an error in state: 153.
 ##
 ## decl(program) -> doperator vdecls COLON callable DEFINE program . DOT [ MAIN FORALL CNAME ]
 ##
@@ -1294,16 +1318,16 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 107, spurious reduction of production outer_program -> callable
-## In state 97, spurious reduction of production inner_program -> outer_program
-## In state 115, spurious reduction of production program -> inner_program
+## In state 113, spurious reduction of production outer_program -> callable
+## In state 103, spurious reduction of production inner_program -> outer_program
+## In state 121, spurious reduction of production program -> inner_program
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME DEFINE VNAME
 ##
-## Ends in an error in state: 87.
+## Ends in an error in state: 93.
 ##
 ## decl(program) -> doperator vdecls COLON callable DEFINE . program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1315,7 +1339,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME TEST
 ##
-## Ends in an error in state: 86.
+## Ends in an error in state: 92.
 ##
 ## decl(program) -> doperator vdecls COLON callable . DEFINE program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1333,7 +1357,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON CNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON VNAME
 ##
-## Ends in an error in state: 85.
+## Ends in an error in state: 91.
 ##
 ## decl(program) -> doperator vdecls COLON . callable DEFINE program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1345,7 +1369,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME COLON VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME RBRACE
 ##
-## Ends in an error in state: 84.
+## Ends in an error in state: 90.
 ##
 ## decl(program) -> doperator vdecls . COLON callable DEFINE program DOT [ MAIN FORALL CNAME ]
 ##
@@ -1357,17 +1381,17 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON FORALL VNAME IN CNAME RBRACE
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
 ## In state 4, spurious reduction of production callable -> CNAME
-## In state 56, spurious reduction of production set -> callable
-## In state 63, spurious reduction of production vdecl -> VNAME IN set
-## In state 59, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
-## In state 62, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
+## In state 62, spurious reduction of production set -> callable
+## In state 69, spurious reduction of production vdecl -> VNAME IN set
+## In state 65, spurious reduction of production separated_nonempty_list(COMMA,vdecl) -> vdecl
+## In state 68, spurious reduction of production vdecls -> separated_nonempty_list(COMMA,vdecl)
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON CNAME DOT VNAME
 ##
-## Ends in an error in state: 79.
+## Ends in an error in state: 85.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA COLON list(decl(formula)) PROGRAM COLON list(decl(program)) MAIN COLON main_decl . EOF [ # ]
 ##
@@ -1379,7 +1403,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON CNAME DOT VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON CNAME TEST
 ##
-## Ends in an error in state: 81.
+## Ends in an error in state: 87.
 ##
 ## main_decl -> callable . DOT [ EOF ]
 ##
@@ -1397,7 +1421,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON CNAME TEST
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON VNAME
 ##
-## Ends in an error in state: 78.
+## Ends in an error in state: 84.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA COLON list(decl(formula)) PROGRAM COLON list(decl(program)) MAIN COLON . main_decl EOF [ # ]
 ##
@@ -1409,7 +1433,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN COLON VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN VNAME
 ##
-## Ends in an error in state: 77.
+## Ends in an error in state: 83.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA COLON list(decl(formula)) PROGRAM COLON list(decl(program)) MAIN . COLON main_decl EOF [ # ]
 ##
@@ -1421,7 +1445,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON MAIN VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM COLON VNAME
 ##
-## Ends in an error in state: 75.
+## Ends in an error in state: 81.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA COLON list(decl(formula)) PROGRAM COLON . list(decl(program)) MAIN COLON main_decl EOF [ # ]
 ##
@@ -1433,7 +1457,7 @@ file: GROUND COLON FORMULA COLON PROGRAM COLON VNAME
 
 file: GROUND COLON FORMULA COLON PROGRAM VNAME
 ##
-## Ends in an error in state: 74.
+## Ends in an error in state: 80.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA COLON list(decl(formula)) PROGRAM . COLON list(decl(program)) MAIN COLON main_decl EOF [ # ]
 ##
@@ -1445,7 +1469,7 @@ file: GROUND COLON FORMULA COLON PROGRAM VNAME
 
 file: GROUND COLON FORMULA COLON VNAME
 ##
-## Ends in an error in state: 72.
+## Ends in an error in state: 78.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA COLON . list(decl(formula)) PROGRAM COLON list(decl(program)) MAIN COLON main_decl EOF [ # ]
 ##
@@ -1457,7 +1481,7 @@ file: GROUND COLON FORMULA COLON VNAME
 
 file: GROUND COLON FORMULA VNAME
 ##
-## Ends in an error in state: 71.
+## Ends in an error in state: 77.
 ##
 ## file -> GROUND COLON list(decl(set)) FORMULA . COLON list(decl(formula)) PROGRAM COLON list(decl(program)) MAIN COLON main_decl EOF [ # ]
 ##
