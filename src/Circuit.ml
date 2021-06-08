@@ -109,7 +109,7 @@ and tuple gmap vmap : Ast.T.tuple -> TupleSet.t  = function
      TupleSet.of_list l
 
 and expr gmap vmap : Ast.T.expr -> Ast.T.constant = function
-  | Ast.T.Var n -> assert (SMap.mem n vmap); SMap.find n vmap
+  | Ast.T.Var n -> if not (SMap.mem n vmap) then failwith (sprintf "unknown %s\n" n); assert (SMap.mem n vmap); SMap.find n vmap
   | Const c -> c
   | Int i -> string_of_int i
   | ListE (eop, es) -> perform_eop eop (List.map (expr gmap vmap) es)
