@@ -41,6 +41,7 @@ and token = parse
   | "\\neg" { P.NEG }
   | "<-" { P.ASSIGN } | "?" { P.TEST }  | "^" { P.CONVERSE } | "*" { P.STAR }
   | ',' { P.COMMA } | ":=" { P.DEFINE } | ':' { P.COLON } | '.' { P.DOT } | '|' { P.MID }
+  | '=' { P.EQ } | "!=" { P.NEQ }
   | "grounding" { P.GROUND } | "formula" { P.FORMULA } | "program" { P.PROGRAM } | "main" { P.MAIN }
   | [' ' '\t'] { token lexbuf }
   | linefeed   { incr_linenum lexbuf; token lexbuf }

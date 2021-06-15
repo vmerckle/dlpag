@@ -20,6 +20,13 @@ struct
   let poperator_aux = function
     | Seq -> "seq"
     | U -> "cup"
+  let roperator = function
+    | Eq -> "="
+    | Neq -> "!="
+    | Lt -> "<"
+    | Gt -> ">"
+    | Leq -> "<="
+    | Geq -> ">="
   let eoperator o = "\\" ^ eoperator_aux o
   let foperator o = "\\" ^ foperator_aux o
   let poperator o = "\\" ^ poperator_aux o
@@ -34,6 +41,7 @@ struct
   and vdecls ds = Print.list' "" ", " "" vdecl ds
   and vdecl = function
     | FromSet (names, s) -> sprintf "%s \\in %s" (Print.unspaces id names) (set s)
+    | Relation (r, e1, e2) -> sprintf "%s %s %s" (expr e1) (roperator r) (expr e2)
   and tuple = function
     | Tuple es -> Print.list' "(" ", " ")" expr es
     | Range (e1, e2) -> sprintf "%s..%s" (expr e1) (expr e2)

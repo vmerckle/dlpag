@@ -75,6 +75,14 @@ let perform_eop eop is = match eop with
   | Ast.T.Max -> max_strings is
   | Ast.T.Min -> min_strings is
 
+let perform_rop rop v1 v2 = match rop with
+  | Ast.T.Eq -> compare v1 v2 = 0
+  | Ast.T.Neq -> compare v1 v2 <> 0
+  | Ast.T.Lt -> compare v1 v2 < 0
+  | Ast.T.Gt -> compare v1 v2 > 0
+  | Ast.T.Leq -> compare v1 v2 <= 0
+  | Ast.T.Geq -> compare v1 v2 >= 0
+
 let rec set gmap vmap : Ast.T.set -> TupleSet.t = function
   | Ast.T.Set (ts, vs) ->
      let maps = vdecls gmap vmap vs in
@@ -100,6 +108,11 @@ and vdecl gmap vmap = function
        else
          List.fold_left2 aux (Some vmap) names t in
      List.filter_map make_map (TupleSet.elements tuples)
+  | Ast.T.Relation (r, e1, e2) ->
+     let e1 = expr gmap vmap e1
+     and e2 = expr gmap vmap e2 in
+     if perform_rop r e1 e2 then [vmap]
+     else []
 and tuple gmap vmap : Ast.T.tuple -> TupleSet.t  = function
   | Ast.T.Tuple es -> TupleSet.singleton (List.map (expr gmap vmap) es)
   | Ast.T.Range (e1, e2) ->

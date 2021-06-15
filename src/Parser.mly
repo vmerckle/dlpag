@@ -7,6 +7,7 @@
 %token LPAREN RPAREN LBRACE RBRACE LBRACKET RBRACKET
 %token DEFINE COLON COMMA DOT RANGE MID
 %token PLUS MINUS (*eop*)
+%token EQ NEQ LEQ GEQ
 %token BIGPLUS BIGMULT MAX MIN (*beop*)
 %token GROUND FORMULA PROGRAM MAIN
 %token EOF
@@ -34,6 +35,7 @@ doperator: | FORALL { ()  }
 eoperator: | PLUS { Ast.T.Add } | STAR { Ast.T.Mult }
 foperator: | CONJ { Ast.T.Conj } | DISJ { Ast.T.Disj }
 poperator: | SEQ { Ast.T.Seq } | NONDET { Ast.T.U }
+roperator: | EQ { Ast.T.Eq } | NEQ { Ast.T.Neq } | LANGLE { Ast.T.Lt } | RANGLE { Ast.T.Gt } | LEQ { Ast.T.Leq } | GEQ { Ast.T.Geq }
 beoperator: | BIGPLUS { Ast.T.Add } | BIGMULT { Ast.T.Mult } | MAX { Ast.T.Max } | MIN { Ast.T.Min }
 bfoperator: | BIGCONJ { Ast.T.Conj } | BIGDISJ { Ast.T.Disj }
 bpoperator: | BIGSEQ { Ast.T.Seq } | BIGNONDET { Ast.T.U }
@@ -46,6 +48,8 @@ set:
 vdecl:
 | LPAREN vs = separated_nonempty_list(COMMA, VNAME) RPAREN IN s = set { Ast.T.FromSet (vs, s) }
 | v = VNAME IN s = set { Ast.T.FromSet ([v], s) }
+| LPAREN e1 = expr r = roperator e2 = expr RPAREN { Ast.T.Relation (r, e1, e2) }
+
 vdecls:
 | l = separated_nonempty_list(COMMA, vdecl) { l }
 

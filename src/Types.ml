@@ -6,11 +6,12 @@ type vname = string
 type eoperator = Add | Mult | Max | Min
 type foperator = Conj | Disj
 type poperator = Seq | U
+type roperator = Eq | Neq | Lt | Gt | Leq | Geq
 
 
 type set = Set of (tuple list * vdecls) | Name of callable
 and vdecls = vdecl list
-and vdecl = FromSet of (vname list * set) | Relation
+and vdecl = FromSet of (vname list * set) | Relation of (roperator * expr * expr)
 and tuple = Tuple of expr list | Range of (expr * expr)
 and expr = Var of vname | Const of constant | Int of int | ListE of (eoperator * expr list) | VarE of (eoperator * vdecls * expr) | Subtract of (expr * expr list)
 and callable = cname * expr list
