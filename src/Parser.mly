@@ -99,7 +99,7 @@ program:
 outer_program:
 | c = callable { Ast.T.CallP c }
 | c = callable ASSIGN f = formula { Ast.T.Assign (c, f) }
-| TEST f = outer_formula TEST { Ast.T.Test f }
+| TEST f = inner_formula TEST { Ast.T.Test f }
 | p = outer_program CONVERSE { Ast.T.Converse p }
 | p = outer_program STAR { Ast.T.Kleene p }
 | LPAREN p = inner_program RPAREN { p }
