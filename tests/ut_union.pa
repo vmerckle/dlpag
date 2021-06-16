@@ -1,0 +1,11 @@
+grounding:
+
+formula:
+psi := <a <- \top \cup a <- \bot> \neg a.
+
+program:
+
+main:
+psi.
+
+% expected : true

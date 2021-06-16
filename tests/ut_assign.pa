@@ -1,0 +1,11 @@
+grounding:
+
+formula:
+psi := <a <- \top> a.
+
+program:
+
+main:
+psi.
+
+% expected : true

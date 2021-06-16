@@ -1,0 +1,12 @@
+grounding:
+
+formula:
+psi :=  <a <- \top> phi.
+phi := a \or b.
+
+program:
+
+main:
+psi.
+
+% expected : true

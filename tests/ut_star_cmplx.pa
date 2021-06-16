@@ -1,0 +1,17 @@
+grounding:
+
+formula:
+%psi := <step \seq step \seq step \seq step \seq step> b.
+psi := <step \star> b.
+
+program:
+step := step1 \cup step2 \cup step3.
+step1 := ?(\neg a \and \neg b)? \seq a <- \top.
+step2 := ?(a \and (\neg b))? \seq b <- \top.
+step3 := ?(a \and b)? \seq a <- \bot \seq b <- \bot.
+
+main:
+psi.
+
+% only true for 3k+2 steps
+% expected : true
