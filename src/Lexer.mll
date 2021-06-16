@@ -39,7 +39,7 @@ and token = parse
   | '+' { P.PLUS } | '-' { P.MINUS } | "*" { P.MULT }
   | "\\sum" { P.BIGPLUS } | "\\mult" { P.BIGMULT } | "\\max" { P.MAX } | "\\min" { P.MIN }
   | "\\neg" { P.NEG }
-  | "<-" { P.ASSIGN } | "?" { P.TEST }  | "^" { P.CONVERSE } | "\\" { P.STAR }
+  | "<-" { P.ASSIGN } | "?" { P.TEST }  | "^" { P.CONVERSE } | "\\star" { P.STAR }
   | ',' { P.COMMA } | ":=" { P.DEFINE } | ':' { P.COLON } | '.' { P.DOT } | '|' { P.MID }
   | '=' { P.EQ } | "!=" { P.NEQ }
   | "grounding" { P.GROUND } | "formula" { P.FORMULA } | "program" { P.PROGRAM } | "main" { P.MAIN }
