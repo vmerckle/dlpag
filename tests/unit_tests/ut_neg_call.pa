@@ -1,0 +1,12 @@
+grounding:
+
+formula:
+psi := \neg phi.
+phi := b.
+
+program:
+
+main:
+psi.
+
+% expected : true

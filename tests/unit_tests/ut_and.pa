@@ -1,0 +1,11 @@
+grounding:
+
+formula:
+psi := <a <- \top> b \and a.
+
+program:
+
+main:
+psi.
+
+% expected : false

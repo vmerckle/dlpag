@@ -1,0 +1,12 @@
+grounding:
+
+formula:
+psi := <a <- \top \seq b <- \top><?c?>(a \and b).
+phi := a \and b.
+
+program:
+
+main:
+psi.
+
+% expected : true

@@ -1,0 +1,11 @@
+grounding:
+
+formula:
+psi := \neg b.
+
+program:
+
+main:
+psi.
+
+% expected : true

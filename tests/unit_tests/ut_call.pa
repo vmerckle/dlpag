@@ -1,0 +1,11 @@
+grounding:
+
+formula:
+psi := a.
+
+program:
+
+main:
+psi.
+
+% expected : false

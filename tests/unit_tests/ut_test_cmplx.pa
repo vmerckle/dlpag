@@ -1,0 +1,16 @@
+grounding:
+
+formula:
+psi := <(ini \cup (a <- top)) \seq test \seq succ>c.
+
+program:
+fff := ?\bot? \seq succ.
+fft := ?(a \and \neg b)? \seq succ.
+succ := c <- \top.
+test := ?(a \and \neg b)?.
+ini := a <- \top \seq b <- \bot.
+
+main:
+psi.
+
+% expected : true

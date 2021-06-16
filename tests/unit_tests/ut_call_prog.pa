@@ -1,0 +1,12 @@
+grounding:
+
+formula:
+psi :=  <init> (a \or b).
+
+program:
+init := a <- \top.
+
+main:
+psi.
+
+% expected : true
