@@ -33,7 +33,7 @@ file: GROUND COLON CNAME DEFINE LBRACE LPAREN TOP
 ##
 ## Ends in an error in state: 37.
 ##
-## inner_expr -> LPAREN . expr RPAREN [ STAR RBRACE RANGE PLUS MINUS MID COMMA ]
+## inner_expr -> LPAREN . expr RPAREN [ RBRACE RANGE PLUS MULT MINUS MID COMMA ]
 ## tuple -> LPAREN . expr COMMA separated_nonempty_list(COMMA,expr) RPAREN [ RBRACE MID COMMA ]
 ##
 ## The known suffix of the stack is as follows:
@@ -58,7 +58,7 @@ file: GROUND COLON CNAME DEFINE LBRACE LPAREN VNAME RBRACE
 ##
 ## Ends in an error in state: 38.
 ##
-## inner_expr -> LPAREN expr . RPAREN [ STAR RBRACE RANGE PLUS MINUS MID COMMA ]
+## inner_expr -> LPAREN expr . RPAREN [ RBRACE RANGE PLUS MULT MINUS MID COMMA ]
 ## tuple -> LPAREN expr . COMMA separated_nonempty_list(COMMA,expr) RPAREN [ RBRACE MID COMMA ]
 ##
 ## The known suffix of the stack is as follows:
@@ -305,7 +305,7 @@ file: GROUND COLON FORALL LPAREN LPAREN TOP
 ##
 ## Ends in an error in state: 11.
 ##
-## inner_expr -> LPAREN . expr RPAREN [ STAR RPAREN RBRACE RANGLE RANGE PLUS NEQ MINUS MID LEQ LANGLE GEQ EQ COMMA ]
+## inner_expr -> LPAREN . expr RPAREN [ RPAREN RBRACE RANGLE RANGE PLUS NEQ MULT MINUS MID LEQ LANGLE GEQ EQ COMMA ]
 ##
 ## The known suffix of the stack is as follows:
 ## LPAREN
@@ -317,7 +317,7 @@ file: GROUND COLON FORALL LPAREN LPAREN VNAME RBRACE
 ##
 ## Ends in an error in state: 31.
 ##
-## inner_expr -> LPAREN expr . RPAREN [ STAR RPAREN RBRACE RANGLE RANGE PLUS NEQ MINUS MID LEQ LANGLE GEQ EQ COMMA ]
+## inner_expr -> LPAREN expr . RPAREN [ RPAREN RBRACE RANGLE RANGE PLUS NEQ MULT MINUS MID LEQ LANGLE GEQ EQ COMMA ]
 ##
 ## The known suffix of the stack is as follows:
 ## LPAREN expr
@@ -381,7 +381,7 @@ file: GROUND COLON FORALL LPAREN MINUS VNAME
 ##
 ## Ends in an error in state: 7.
 ##
-## inner_expr -> MINUS . INT [ STAR RPAREN RBRACE RANGLE RANGE PLUS NEQ MINUS MID LEQ LANGLE GEQ EQ COMMA ]
+## inner_expr -> MINUS . INT [ RPAREN RBRACE RANGLE RANGE PLUS NEQ MULT MINUS MID LEQ LANGLE GEQ EQ COMMA ]
 ##
 ## The known suffix of the stack is as follows:
 ## MINUS
@@ -464,6 +464,43 @@ file: GROUND COLON FORALL LPAREN VNAME MINUS VNAME VNAME
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
+file: GROUND COLON FORALL LPAREN VNAME PLUS TOP
+##
+## Ends in an error in state: 26.
+##
+## separated_many_slist(eoperator,inner_expr) -> inner_expr eoperator . separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
+##
+## The known suffix of the stack is as follows:
+## inner_expr eoperator
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON FORALL LPAREN VNAME PLUS VNAME PLUS TOP
+##
+## Ends in an error in state: 29.
+##
+## separated_nonempty_list(eoperator,inner_expr) -> inner_expr eoperator . separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
+##
+## The known suffix of the stack is as follows:
+## inner_expr eoperator
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+file: GROUND COLON FORALL LPAREN VNAME PLUS VNAME VNAME
+##
+## Ends in an error in state: 28.
+##
+## separated_nonempty_list(eoperator,inner_expr) -> inner_expr . [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
+## separated_nonempty_list(eoperator,inner_expr) -> inner_expr . eoperator separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
+##
+## The known suffix of the stack is as follows:
+## inner_expr
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
 file: GROUND COLON FORALL LPAREN VNAME RANGLE TOP
 ##
 ## Ends in an error in state: 71.
@@ -518,48 +555,11 @@ file: GROUND COLON FORALL LPAREN VNAME RPAREN VNAME
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
-file: GROUND COLON FORALL LPAREN VNAME STAR TOP
-##
-## Ends in an error in state: 26.
-##
-## separated_many_slist(eoperator,inner_expr) -> inner_expr eoperator . separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
-##
-## The known suffix of the stack is as follows:
-## inner_expr eoperator
-##
-
-<YOUR SYNTAX ERROR MESSAGE HERE>
-
-file: GROUND COLON FORALL LPAREN VNAME STAR VNAME STAR TOP
-##
-## Ends in an error in state: 29.
-##
-## separated_nonempty_list(eoperator,inner_expr) -> inner_expr eoperator . separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
-##
-## The known suffix of the stack is as follows:
-## inner_expr eoperator
-##
-
-<YOUR SYNTAX ERROR MESSAGE HERE>
-
-file: GROUND COLON FORALL LPAREN VNAME STAR VNAME VNAME
-##
-## Ends in an error in state: 28.
-##
-## separated_nonempty_list(eoperator,inner_expr) -> inner_expr . [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
-## separated_nonempty_list(eoperator,inner_expr) -> inner_expr . eoperator separated_nonempty_list(eoperator,inner_expr) [ RPAREN RBRACE RANGLE RANGE NEQ MID LEQ LANGLE GEQ EQ COMMA ]
-##
-## The known suffix of the stack is as follows:
-## inner_expr
-##
-
-<YOUR SYNTAX ERROR MESSAGE HERE>
-
 file: GROUND COLON FORALL LPAREN VNAME VNAME
 ##
 ## Ends in an error in state: 55.
 ##
-## inner_expr -> VNAME . [ STAR RANGLE PLUS NEQ MINUS LEQ LANGLE GEQ EQ ]
+## inner_expr -> VNAME . [ RANGLE PLUS NEQ MULT MINUS LEQ LANGLE GEQ EQ ]
 ## separated_nonempty_list(COMMA,VNAME) -> VNAME . [ RPAREN ]
 ## separated_nonempty_list(COMMA,VNAME) -> VNAME . COMMA separated_nonempty_list(COMMA,VNAME) [ RPAREN ]
 ##

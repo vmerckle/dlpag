@@ -6,7 +6,7 @@
 %token ASSIGN TEST SEQ NONDET CONVERSE STAR
 %token LPAREN RPAREN LBRACE RBRACE LBRACKET RBRACKET
 %token DEFINE COLON COMMA DOT RANGE MID
-%token PLUS MINUS (*eop*)
+%token PLUS MULT MINUS (*eop*)
 %token EQ NEQ LEQ GEQ
 %token BIGPLUS BIGMULT MAX MIN (*beop*)
 %token GROUND FORMULA PROGRAM MAIN
@@ -32,7 +32,7 @@ separated_many_slist(Sep, Sub):
 | a = Sub s = Sep r = separated_nonempty_list(Sep, Sub) { (s, a :: r) }
 
 doperator: | FORALL { ()  }
-eoperator: | PLUS { Ast.T.Add } | STAR { Ast.T.Mult }
+eoperator: | PLUS { Ast.T.Add } | MULT { Ast.T.Mult }
 foperator: | CONJ { Ast.T.Conj } | DISJ { Ast.T.Disj }
 poperator: | SEQ { Ast.T.Seq } | NONDET { Ast.T.U }
 roperator: | EQ { Ast.T.Eq } | NEQ { Ast.T.Neq } | LANGLE { Ast.T.Lt } | RANGLE { Ast.T.Gt } | LEQ { Ast.T.Leq } | GEQ { Ast.T.Geq }
