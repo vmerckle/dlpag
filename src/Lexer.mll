@@ -47,7 +47,7 @@ and token = parse
   | linefeed   { incr_linenum lexbuf; token lexbuf }
   | vname as n { P.VNAME n }
   | cname as n { P.CNAME n }
-  | "\\in" { P.IN }
+  | "\\in" { P.IN } | "\\notin" { P.NOTIN }
   | "\\forall" { P.FORALL }
   | "\\bigor" { P.BIGDISJ } | "\\bigand" { P.BIGCONJ } | "\\bigseq" { P.BIGSEQ } | "\\bigcup" { P.BIGNONDET }
   | "\\or" { P.DISJ } | "\\and" { P.CONJ } | "\\seq" { P.SEQ } | "\\cup" { P.NONDET }

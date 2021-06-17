@@ -1,7 +1,8 @@
 %token <string> VNAME
 %token <string> CNAME
 %token <int> INT
-%token IN FORALL BIGCONJ BIGDISJ BIGSEQ BIGNONDET
+%token IN NOTIN
+%token FORALL BIGCONJ BIGDISJ BIGSEQ BIGNONDET
 %token BOT TOP NEG CONJ DISJ LANGLE RANGLE
 %token ASSIGN TEST SEQ NONDET CONVERSE STAR
 %token LPAREN RPAREN LBRACE RBRACE LBRACKET RBRACKET
@@ -25,11 +26,23 @@
 %start file
 %%
 
+%inline soption(X):
+|        { "" } /* nothing */
+| x = X  { x }
+
 separated_many_list(Sep, Sub):
 | a = Sub Sep r = separated_nonempty_list(Sep, Sub) { a :: r }
 
 separated_many_slist(Sep, Sub):
 | a = Sub s = Sep r = separated_nonempty_list(Sep, Sub) { (s, a :: r) }
+
+tuple_list(X):
+| LPAREN l = separated_nonempty_list(COMMA, X) RPAREN { l }
+otuple_list(X):
+| { [] }
+| l = tuple_list(X) { l }
+ttuple_list(X):
+| LPAREN x = X COMMA l = separated_nonempty_list(COMMA, X) RPAREN { x :: l }
 
 doperator: | FORALL { ()  }
 eoperator: | PLUS { Ast.T.Add } | MULT { Ast.T.Mult }
@@ -40,24 +53,43 @@ beoperator: | BIGPLUS { Ast.T.Add } | BIGMULT { Ast.T.Mult } | MAX { Ast.T.Max }
 bfoperator: | BIGCONJ { Ast.T.Conj } | BIGDISJ { Ast.T.Disj }
 bpoperator: | BIGSEQ { Ast.T.Seq } | BIGNONDET { Ast.T.U }
 
+pure_term:
+| name = CNAME vs = otuple_list(pure_term) { Ast.T.Fun (name, vs) }
+| vs = ttuple_list(pure_term) { Ast.T.Fun ("", vs) }
+| v = VNAME { Ast.T.Var v }
+
+term:
+| name = CNAME ts = otuple_list(term) { Ast.T.Fun (name, ts)  }
+| ts = ttuple_list(term) { Ast.T.Fun ("", ts)  }
+| v = VNAME { Ast.T.Var v }
+| e = cexpr { Ast.T.Int e }
+
 set:
-| LBRACE cs = separated_nonempty_list(COMMA, tuple) RBRACE { Ast.T.Set (cs, []) }
-| LBRACE cs = separated_nonempty_list(COMMA, tuple) MID vs = vdecls RBRACE { Ast.T.Set (cs, vs) }
+| LBRACE cs = separated_nonempty_list(COMMA, tuple) vs = loption(MID vs = vdecls { vs }) RBRACE { Ast.T.Set (cs, vs) }
 | c = callable { Ast.T.Name c }
 
+constraints:
+| t1 = term r = roperator t2 = term { Ast.T.Relation (r, t1, t2) }
+| t = term NOTIN s = set { Ast.T.Notin (t, s)}
+
 vdecl:
-| LPAREN vs = separated_nonempty_list(COMMA, VNAME) RPAREN IN s = set { Ast.T.FromSet (vs, s) }
-| v = VNAME IN s = set { Ast.T.FromSet ([v], s) }
-| LPAREN e1 = expr r = roperator e2 = expr RPAREN { Ast.T.Relation (r, e1, e2) }
+| vs = pure_term IN s = set { Ast.T.FromSet (vs, s) }
+| RPAREN c = constraints RPAREN { Ast.T.Constraint c }
 
 vdecls:
 | l = separated_nonempty_list(COMMA, vdecl) { l }
 
 tuple:
-| LPAREN e = expr COMMA es = separated_nonempty_list(COMMA, expr) RPAREN { Ast.T.Tuple (e :: es)  }
-| e = expr { Ast.T.Tuple [e] }
+| t = term { Ast.T.Term t  }
 | e1 = expr RANGE e2 = expr { Ast.T.Range (e1, e2) }
 
+cexpr:
+| l = separated_many_slist(eoperator, inner_expr) { Ast.T.ListE l }
+| l = separated_many_slist(MINUS, inner_expr) { Ast.T.Subtract (List.hd (snd l), List.tl (snd l)) }
+| o = beoperator vs = vdecls COLON f = expr { Ast.T.VarE (o, vs, f) }
+| LPAREN e = expr RPAREN { e }
+| i = INT { Ast.T.Int i }
+| MINUS i = INT { Ast.T.Int (-i) }
 expr:
 | l = separated_many_slist(eoperator, inner_expr) { Ast.T.ListE l }
 | l = separated_many_slist(MINUS, inner_expr) { Ast.T.Subtract (List.hd (snd l), List.tl (snd l)) }
@@ -67,17 +99,14 @@ expr:
 inner_expr:
 | LPAREN e = expr RPAREN { e }
 | n = VNAME { Ast.T.Var n }
-| n = CNAME { Ast.T.Const n }
 | i = INT { Ast.T.Int i }
 | MINUS i = INT { Ast.T.Int (-i) }
 
 callable:
-| n = CNAME LPAREN l = separated_list(COMMA, expr) RPAREN { (n, l) }
-| n = CNAME { (n, []) }
+| n = CNAME ts = otuple_list(term) { (n, ts) }
 
 decl(A):
-| doperator vs = vdecls COLON c = callable DEFINE a = A DOT { (vs, c, a) }
-| c = callable DEFINE a = A DOT { ([], c, a) }
+| vs = loption(doperator vs = vdecls COLON { vs }) c = callable DEFINE a = A DOT { (vs, c, a) }
 
 formula:
 | f = inner_formula { f }
