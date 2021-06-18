@@ -10,6 +10,7 @@
 %token PLUS MULT MINUS (*eop*)
 %token EQ NEQ LEQ GEQ
 %token BIGPLUS BIGMULT MAX MIN (*beop*)
+%token UNION INTERSECT SETMINUS (* sop *)
 %token GROUND FORMULA PROGRAM MAIN
 %token EOF
 
@@ -30,11 +31,8 @@
 |        { "" } /* nothing */
 | x = X  { x }
 
-separated_many_list(Sep, Sub):
-| a = Sub Sep r = separated_nonempty_list(Sep, Sub) { a :: r }
-
 separated_many_slist(Sep, Sub):
-| a = Sub s = Sep r = separated_nonempty_list(Sep, Sub) { (s, a :: r) }
+| a = Sub s = Sep r = separated_nonempty_list(Sep, Sub) { (s, a, r) }
 
 tuple_list(X):
 | LPAREN l = separated_nonempty_list(COMMA, X) RPAREN { l }
@@ -49,6 +47,7 @@ eoperator: | PLUS { Ast.T.Add } | MULT { Ast.T.Mult }
 foperator: | CONJ { Ast.T.Conj } | DISJ { Ast.T.Disj }
 poperator: | SEQ { Ast.T.Seq } | NONDET { Ast.T.U }
 roperator: | EQ { Ast.T.Eq } | NEQ { Ast.T.Neq } | LANGLE { Ast.T.Lt } | RANGLE { Ast.T.Gt } | LEQ { Ast.T.Leq } | GEQ { Ast.T.Geq }
+soperator: | UNION { Ast.T.Union } | INTERSECT { Ast.T.Intersect } | SETMINUS { Ast.T.Setminus }
 beoperator: | BIGPLUS { Ast.T.Add } | BIGMULT { Ast.T.Mult } | MAX { Ast.T.Max } | MIN { Ast.T.Min }
 bfoperator: | BIGCONJ { Ast.T.Conj } | BIGDISJ { Ast.T.Disj }
 bpoperator: | BIGSEQ { Ast.T.Seq } | BIGNONDET { Ast.T.U }
@@ -65,8 +64,16 @@ term:
 | e = cexpr { Ast.T.Int e }
 
 set:
+| s = inner_set { s }
+
+outer_set:
 | LBRACE cs = separated_nonempty_list(COMMA, tuple) vs = loption(MID vs = vdecls { vs }) RBRACE { Ast.T.Set (cs, vs) }
 | c = callable { Ast.T.Name c }
+| RPAREN s = inner_set RPAREN { s }
+
+inner_set:
+| l = separated_many_slist(soperator, outer_set) { Ast.T.List l }
+| s = outer_set { s }
 
 constraints:
 | t1 = term r = roperator t2 = term { Ast.T.Relation (r, t1, t2) }
@@ -85,14 +92,14 @@ tuple:
 
 cexpr:
 | l = separated_many_slist(eoperator, inner_expr) { Ast.T.ListE l }
-| l = separated_many_slist(MINUS, inner_expr) { Ast.T.Subtract (List.hd (snd l), List.tl (snd l)) }
+| l = separated_many_slist(MINUS, inner_expr) { let ((), h, r) = l in Ast.T.Subtract (h, r) }
 | o = beoperator vs = vdecls COLON f = expr { Ast.T.VarE (o, vs, f) }
 | LPAREN e = expr RPAREN { e }
 | i = INT { Ast.T.Int i }
 | MINUS i = INT { Ast.T.Int (-i) }
 expr:
 | l = separated_many_slist(eoperator, inner_expr) { Ast.T.ListE l }
-| l = separated_many_slist(MINUS, inner_expr) { Ast.T.Subtract (List.hd (snd l), List.tl (snd l)) }
+| l = separated_many_slist(MINUS, inner_expr) { let ((), h, r) = l in Ast.T.Subtract (h, r) }
 | o = beoperator vs = vdecls COLON f = expr { Ast.T.VarE (o, vs, f) }
 | e = inner_expr { e }
 

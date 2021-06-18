@@ -59,6 +59,11 @@ let perform_rop rop v1 v2 = match rop with
   | Ast.T.Leq -> compare v1 v2 <= 0
   | Ast.T.Geq -> compare v1 v2 >= 0
 
+let perform_sop sop s1 s2 = match sop with
+  | Ast.T.Union -> GTermSet.union s1 s2
+  | Ast.T.Intersect -> GTermSet.inter s1 s2
+  | Ast.T.Setminus -> GTermSet.diff s1 s2
+
 let rec pure_term vmapo (gterm : ground_term) (pterm : Ast.T.pure_term) : ground_term SMap.t option = match (pterm, gterm) with
   | Ast.T.Var v, _ -> (match vmapo with | None -> None
                                         | Some m -> match SMap.find_opt v m with | Some gt -> if gt = gterm then Some m else None
@@ -73,6 +78,10 @@ let rec set gmap vmap : Ast.T.set -> GTermSet.t = function
      let treat_tuple t : GTermSet.t = unions (List.map (fun m -> tuple gmap m t) maps) in
      unions (List.map treat_tuple ts)
  | Ast.T.Name c -> CMap.find (callable gmap vmap c) gmap (* SMap.find c gmap*)
+ | Ast.T.List (o, s, ss) ->
+    let s' = set gmap vmap s
+    and ss' = List.map (set gmap vmap) ss in
+    List.fold_left (perform_sop o) s' ss'
 and vdecls gmap vmap : Ast.T.vdecls -> ground_term SMap.t list =
   let f vmaps vdec =
   List.concat_map (fun vmap -> vdecl gmap vmap vdec) vmaps in
@@ -109,7 +118,7 @@ and term gmap vmap = function
 and expr gmap vmap : Ast.T.expr -> int = function
   | Ast.T.Var n -> if not (SMap.mem n vmap) then failwith (sprintf "unknown %s\n" n); assert (SMap.mem n vmap); (match SMap.find n vmap with | Int i -> i | Fun _ as g -> failwith (sprintf "Variable %s ground to a non-int %s" n (Print.ground_term g)))
   | Int i -> i
-  | ListE (eop, es) -> perform_eop eop (List.map (expr gmap vmap) es)
+  | ListE (eop, e, es) -> perform_eop eop (List.map (expr gmap vmap) (e :: es))
   | VarE (eop, vs, e) ->
      let vmaps = vdecls gmap vmap vs in
      let ints = List.map (fun m -> expr gmap m e) vmaps in
@@ -125,7 +134,7 @@ let rec formula gmap vmap : Ast.T.formula -> T.formula = function
   | Ast.T.CallF c -> CallF (callable gmap vmap c)
   | Top -> Top
   | Neg f -> Neg (formula gmap vmap f)
-  | ListF (fop, fs) -> ListF (fop, List.map (formula gmap vmap) fs)
+  | ListF (fop, f, fs) -> ListF (fop, List.map (formula gmap vmap) (f :: fs))
   | VarF (fop, vs, f) ->
      let vmaps = vdecls gmap vmap vs in
      let fs = List.map (fun m -> formula gmap m f) vmaps in
@@ -136,7 +145,7 @@ and program gmap vmap : Ast.T.program -> T.program = function
   | Ast.T.CallP c -> CallP (callable gmap vmap c)
   | Assign (c, f) -> Assign (callable gmap vmap c, formula gmap vmap f)
   | Test f -> Test (formula gmap vmap f)
-  | ListP (pop, ps) -> ListP (pop, List.map (program gmap vmap) ps)
+  | ListP (pop, p, ps) -> ListP (pop, List.map (program gmap vmap) (p :: ps))
   | VarP (pop, vs, p) ->
      let vmaps = vdecls gmap vmap vs in
      let ps = List.map (fun m -> program gmap m p) vmaps in

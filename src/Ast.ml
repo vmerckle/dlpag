@@ -26,9 +26,14 @@ struct
     | Gt -> ">"
     | Leq -> "<="
     | Geq -> ">="
+  let soperator_aux = function
+    | Intersect -> "intersect"
+    | Union -> "union"
+    | Setminus -> "setminus"
   let eoperator o = "\\" ^ eoperator_aux o
   let foperator o = "\\" ^ foperator_aux o
   let poperator o = "\\" ^ poperator_aux o
+  let soperator o = "\\" ^ soperator_aux o
   let bigeoperator o = "\\big" ^ eoperator_aux o
   let bigfoperator o = "\\big" ^ foperator_aux o
   let bigpoperator o = "\\big" ^ poperator_aux o
@@ -43,6 +48,7 @@ struct
     | Set (t, []) -> sprintf "{ %s }" (Print.unspaces tuple t)
     | Set (t, (_ :: _ as vs)) -> sprintf "{ %s | %s }" (Print.unspaces tuple t) (vdecls vs)
     | Name c -> callable c
+    | List (o, s, ss) -> Print.list' "" (sprintf " %s " (soperator o)) "" set (s :: ss)
   and vdecls ds = Print.list' "" ", " "" vdecl ds
   and vdecl = function
     | FromSet (term, s) -> sprintf "%s \\in %s" (pure_term term) (set s)
@@ -58,7 +64,7 @@ struct
     | Int e -> expr e
     | Var n -> n
   and expr = function
-    | ListE (a, es) -> Print.list' "" (sprintf " %s " (eoperator a)) "" inner_expr es
+    | ListE (a, e, es) -> Print.list' "" (sprintf " %s " (eoperator a)) "" inner_expr (e :: es)
     | VarE (a, vs, e) -> sprintf "%s %s, %s" (bigeoperator a) (vdecls vs) (expr e)
     | Subtract (v, vs) -> Print.list' "" " - " "" inner_expr (v :: vs)
     | Var _ | Int _ as e -> inner_expr e
@@ -71,7 +77,7 @@ struct
     | _ :: _ -> sprintf "%s(%s)" n (Print.list' "" ", " "" term ts)
 
   let rec formula = function
-    | ListF (a, fs) -> Print.list' "" (sprintf " %s " (foperator a)) "" inner_formula fs
+    | ListF (a, f, fs) -> Print.list' "" (sprintf " %s " (foperator a)) "" inner_formula (f :: fs)
     | VarF (a, vs, f) -> sprintf "%s %s, %s" (bigfoperator a) (vdecls vs) (formula f)
     | CallF _ | Top | Neg _ | Diamond _ as f -> inner_formula f
   and inner_formula = function
@@ -81,7 +87,7 @@ struct
     | Diamond (p, f) -> sprintf "<%s>%s" (program p) (inner_formula f)
     | ListF _ | VarF _  as f -> sprintf "(%s)" (formula f)
   and program = function
-    | ListP (a, ps) -> Print.list' "" (sprintf " %s " (poperator a)) "" inner_program ps
+    | ListP (a, p, ps) -> Print.list' "" (sprintf " %s " (poperator a)) "" inner_program (p :: ps)
     | VarP (a, vs, p) -> sprintf "%s %s, %s" (bigpoperator a) (vdecls vs) (program p)
     | CallP _ | Assign _ | Test _ | Converse _ | Kleene _ as p -> inner_program p
   and inner_program = function
