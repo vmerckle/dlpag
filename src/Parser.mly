@@ -6,7 +6,7 @@
 %token BOT TOP NEG CONJ DISJ LANGLE RANGLE
 %token ASSIGN TEST SEQ NONDET CONVERSE STAR
 %token LPAREN RPAREN LBRACE RBRACE LBRACKET RBRACKET
-%token DEFINE COLON COMMA DOT RANGE MID
+%token DEFINE COLON COMMA DOT RANGE MID WHERE
 %token PLUS MULT MINUS (*eop*)
 %token EQ NEQ LEQ GEQ
 %token BIGPLUS BIGMULT MAX MIN (*beop*)
@@ -81,7 +81,7 @@ constraints:
 
 vdecl:
 | vs = pure_term IN s = set { Ast.T.FromSet (vs, s) }
-| RPAREN c = constraints RPAREN { Ast.T.Constraint c }
+| WHERE c = constraints { Ast.T.Constraint c }
 
 vdecls:
 | l = separated_nonempty_list(COMMA, vdecl) { l }

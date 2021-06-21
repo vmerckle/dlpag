@@ -34,7 +34,9 @@ rule line_comment = parse
   | _   { raise (Error (print_error lexbuf)) }
 
 and token = parse
-  | '(' { P.LPAREN   } | ')' { P.RPAREN   } | '[' { P.LBRACKET } | ']' { P.RBRACKET } | '{' { P.LBRACE   } | '}' { P.RBRACE   } | '<' { P.LANGLE   } | '>' { P.RANGLE   }
+  | '(' { P.LPAREN   } | ')' { P.RPAREN   } | '[' { P.LBRACKET } | ']' { P.RBRACKET } | '{' { P.LBRACE   } | '}' { P.RBRACE   }
+  | '<' { P.LANGLE } | '>' { P.RANGLE }
+  | "<=" { P.LEQ } | ">=" { P.GEQ }
   | ".." { P.RANGE }
   | '+' { P.PLUS } | '-' { P.MINUS } | "*" { P.MULT }
   | "\\sum" { P.BIGPLUS } | "\\mult" { P.BIGMULT } | "\\max" { P.MAX } | "\\min" { P.MIN }
@@ -48,7 +50,7 @@ and token = parse
   | linefeed   { incr_linenum lexbuf; token lexbuf }
   | vname as n { P.VNAME n }
   | cname as n { P.CNAME n }
-  | "\\in" { P.IN } | "\\notin" { P.NOTIN }
+  | "\\in" { P.IN } | "\\notin" { P.NOTIN } | "\\where" { P.WHERE }
   | "\\forall" { P.FORALL }
   | "\\bigor" { P.BIGDISJ } | "\\bigand" { P.BIGCONJ } | "\\bigseq" { P.BIGSEQ } | "\\bigcup" { P.BIGNONDET }
   | "\\or" { P.DISJ } | "\\and" { P.CONJ } | "\\seq" { P.SEQ } | "\\cup" { P.NONDET }
