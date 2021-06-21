@@ -1,0 +1,17 @@
+grounding:
+range := { 2..100 }.
+composites := {I * J | I \in range, J \in range , \where I*J <= 100}.
+primes := range \setminus composites.
+
+formula:
+psi := <ini>(verif \and otherverif).
+verif := true(2) \and true(3) \and (\neg true(4)).
+otherverif := (\neg true(57)) \and true(97). % paper worthy
+
+program:
+ini := \bigseq I \in primes : true(I) <- \top.
+
+main:
+psi.
+
+% expected : true
