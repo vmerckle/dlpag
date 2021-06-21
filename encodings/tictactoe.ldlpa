@@ -1,26 +1,27 @@
 grounding:
 dim := { 1..3 }.
+cell := { (I, J) | I \in dim, J \in dim }.
 player := { naught, cross }.
 
 formula:
-\forall P \in player : row(P) := \bigor I \in dim : \bigand J \in dim : move(I, J, P).
-\forall P \in player : col(P) := \bigor J \in dim : \bigand I \in dim : move(I, J, P).
-\forall P \in player : diag1(P) := \bigand I \in dim : move(I, I, P).
-\forall P \in player : diag2(P) := \bigand I \in dim : move(I, 4-I, P).
+\forall P \in player : row(P) := \bigor I \in dim : \bigand J \in dim : move((I, J), P).
+\forall P \in player : col(P) := \bigor J \in dim : \bigand I \in dim : move((I, J), P).
+\forall P \in player : diag1(P) := \bigand I \in dim : move((I, I), P).
+\forall P \in player : diag2(P) := \bigand I \in dim : move((I, 4-I), P).
 \forall P \in player : win(P) := row(P) \or col(P) \or diag1(P) \or diag2(P).
-\forall I \in dim, J \in dim : fullThere(I, J) := \bigor P \in player : move(I, J, P).
-full := \bigand I \in dim, J \in dim : fullThere(I, J).
+\forall C \in cell : fullThere(C) := \bigor P \in player : move(C, P).
+full := \bigand C \in cell : fullThere(C).
 
 \forall K \in { 0..4 } : nstrategy((2*K)+1) := \neg win(cross) \and <play(naught)>cstrategy(2*K).
 cstrategy(0) := win(naught).
 \forall K \in { 1..4 } : cstrategy(2*K) := win(naught) \or (\neg full \and [play(cross)]nstrategy((2*K)-1)).
 
-afterCorrect := <playThere(1, 1, naught) \seq playThere(2, 2, cross)>nstrategy(7).
-afterError   := <playThere(1, 1, naught) \seq playThere(1, 2, cross)>nstrategy(7).
+afterCorrect := <playThere((1, 1), naught) \seq playThere((2, 2), cross)>nstrategy(7).
+afterError   := <playThere((1, 1), naught) \seq playThere((1, 2), cross)>nstrategy(7).
 
 program:
-\forall I \in dim, J \in dim, P \in player : playThere(I, J, P) := ?\neg fullThere(I, J)? \seq move(I, J, P) <- \top.
-\forall P \in player : play(P) := \bigcup I \in dim, J \in dim : playThere(I, J, P).
+\forall C \in cell, P \in player : playThere(C, P) := ?\neg fullThere(C)? \seq move(C, P) <- \top.
+\forall P \in player : play(P) := \bigcup C \in cell : playThere(C, P).
 
 main:
 nstrategy(9).
